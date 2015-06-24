@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<h3>Registrasi Startup</h3>
+<h3>Registrasi Investor</h3>
 
 <form class="login-form">
   <div class="form-group">
@@ -17,12 +17,12 @@
     <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
   </div>
   <div class="form-group">
-    <label for="inputNamaStartup">Nama Startup</label>
-    <input type="text" class="form-control" id="namaStartup" placeholder="Nama Startup" name="namaStartup" required>
+    <label for="inputNamaPerusahaan">Nama Perusahaan</label>
+    <input type="text" class="form-control" id="namaPerusahaan" placeholder="Nama Perusahaan" name="namaPerusahaan" required>
   </div>
   <div class="form-group">
-    <label for="inputAlamatStartup">Alamat Startup</label>
-    <input type="text" class="form-control" id="alamatStartup" placeholder="Alamat Startup" name="alamatStartup" required>
+    <label for="inputAlamatPerusahaan">Alamat Perusahaan</label>
+    <input type="text" class="form-control" id="alamatPerusahaan" placeholder="Alamat Perusahaan" name="alamatPerusahaan" required>
   </div>
   <div class="form-group">
     <label for="inputEmail">Email</label>
