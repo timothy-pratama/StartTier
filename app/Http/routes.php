@@ -16,3 +16,5 @@ Route::get('/', ['as' => 'home', function () {
 }]);
 
 Route::get('/login', ['uses'=>'loginController@index','as'=>'login']);
+Route::get('/register_startup', ['uses'=>'loginController@register_startup', 'as'=>'register_startup']);
+Route::get('/register_investor', ['uses'=>'loginController@register_investor', 'as'=>'register_investor']);

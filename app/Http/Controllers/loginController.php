@@ -24,9 +24,14 @@ class loginController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function register_startup()
     {
-        //
+        return view('register_startup');
+    }
+
+    public function register_investor()
+    {
+        return view('register_investor');
     }
 
     /**

@@ -1,6 +1,11 @@
-@extends('header.home')
-@section('content')
+@extends('header.master')
 
+@section('navbar')
+@include('navbar.login')
+@stop
+
+@section('content')
+<h3>Login untuk menggunakan StartTier</h3>
 <form class="login-form">
   <div class="form-group">
     <label for="inputUsername">Username</label>
@@ -15,8 +20,8 @@
       <input type="checkbox" id="rememberMe" name="rememberMe"> Remember me
     </label>
   </div>
-  <input type="submit" class="btn btn-default" value="Login" />
+  <input type="submit" class="btn btn-primary" value="Login" />
 
-  <p style="margin: 10px 0 0 0; text-align: center">Belum punya akun? <a href="#">Daftar di sini</a></p>
+  <p style="margin: 10px 0 0 0; text-align: center">Daftar sebagai <a href="{{route('register_startup')}}"><b>startup</b></a> atau <a href="{{route('register_investor')}}"><b>investor</b></a></p>
 </form>
 @stop
