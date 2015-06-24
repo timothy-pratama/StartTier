@@ -30,4 +30,10 @@
   </div>
   <input type="submit" class="btn btn-primary" value="Daftar" />
 </form>
+
+<script>
+    $('#menu_startup').removeClass();
+    $('#menu_investor').removeClass();
+    $('#menu_beranda').removeClass();
+</script>
 @stop

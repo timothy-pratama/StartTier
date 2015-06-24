@@ -12,9 +12,9 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="{{route('home')}}">Beranda</a></li>
-        <li><a href="#">Startup</a></li>
-        <li><a href="#">Investor</a></li>
+        <li id="menu_beranda" class="active"><a href="{{route('home')}}">Beranda</a></li>
+        <li id="menu_startup"><a href="{{route('list_startup')}}">Startup</a></li>
+        <li id="menu_investor"><a href="{{route('list_investor')}}">Investor</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

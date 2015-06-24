@@ -24,4 +24,10 @@
 
   <p style="margin: 10px 0 0 0; text-align: center">Daftar sebagai <a href="{{route('register_startup')}}"><b>startup</b></a> atau <a href="{{route('register_investor')}}"><b>investor</b></a></p>
 </form>
+
+<script>
+    $('#menu_startup').removeClass();
+    $('#menu_investor').removeClass();
+    $('#menu_beranda').removeClass();
+</script>
 @stop

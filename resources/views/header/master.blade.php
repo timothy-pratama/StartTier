@@ -8,6 +8,10 @@
 <link href="{{asset('css/style.css')}}" rel="stylesheet"/>
 <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" />
 
+<script src="{{asset('js/jquery-1.11.3.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/jquery.rater.js')}}" type="text/javascript"></script>
+
 </head>
 <body>
 <div id="wrapper">
@@ -23,9 +27,6 @@
 <div id="footer">
 	<p>© 2016 TofuCurry. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
 </div>
-
-<script src="{{asset('js/jquery-2.1.4.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
 <!-- end #footer -->
 </body>
 </html>
