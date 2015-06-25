@@ -232,29 +232,29 @@ img.aligncenter {
 
 /* Content */
 
-#content {
+#content-profile {
 	float: left;
 	width: 800px;
 	padding: 0px 0px 0px 0px;
 }
 
-.post {
+.post-profile {
 	clear: both;
 	padding: 30px 0px;
 	border-bottom: 4px solid #EA5A4B;
 }
 
-.post .title {
+.post-profile .title {
 	padding-top: 10px;
 	letter-spacing: -2px;
 }
 
-.post .title a {
+.post-profile .title a {
 	border: none;
 	color: #484848;
 }
 
-.post .meta {
+.post-profile .meta {
 	display: inline-block;
 	padding: 5px 10px;
 	background: #000000;
@@ -265,17 +265,17 @@ img.aligncenter {
 	color: #CCCCCC;
 }
 
-.post .meta a {
+.post-profile .meta a {
 	color: #FFFFFF;
 }
 
-.post .entry {
+.post-profile .entry {
 	text-align: justify;
 	margin-bottom: 25px;
 	padding: 10px 0px 0px 0px;
 }
 
-.post img
+.post-profile img
 {
 	margin-bottom: 2em;
 	border-radius: 10px;
@@ -294,35 +294,35 @@ img.aligncenter {
 
 /* Sidebar */
 
-#sidebar {
+#sidebar-profile {
 	float: right;
 	width: 280px;
 	padding: 30px 0px 0px 0px;
 }
 
-#sidebar ul {
+#sidebar-profile ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-#sidebar li {
+#sidebar-profile li {
 	margin: 0;
 	padding: 0;
 }
 
-#sidebar li ul {
+#sidebar-profile li ul {
 	margin: 0px 15px;
 	padding-bottom: 30px;
 }
 
-#sidebar li li {
+#sidebar-profile li li {
 	padding-left: 20px;
 	line-height: 35px;
 	background: url(images/img07.jpg) no-repeat left 14px;
 }
 
-#sidebar li li span {
+#sidebar-profile li li span {
 	display: block;
 	margin-top: -20px;
 	padding: 0;
@@ -330,7 +330,7 @@ img.aligncenter {
 	font-style: italic;
 }
 
-#sidebar h2 {
+#sidebar-profile h2 {
 	height: 38px;
 	margin-bottom: 20px;
 	padding: 12px 0 0 0;
@@ -340,18 +340,18 @@ img.aligncenter {
 	color: #484848;
 }
 
-#sidebar p {
+#sidebar-profile p {
 	margin: 0 0px;
 	padding: 0px 20px 20px 20px;
 	text-align: justify;
 }
 
-#sidebar a {
+#sidebar-profile a {
 	border: none;
 	color: #737373;
 }
 
-#sidebar a:hover {
+#sidebar-profile a:hover {
 	text-decoration: underline;
 }
 

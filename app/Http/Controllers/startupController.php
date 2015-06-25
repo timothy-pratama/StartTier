@@ -14,7 +14,12 @@ class startupController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index($nama_startup)
+    {
+        return view('home_startup',compact('nama_startup'));
+    }
+
+    public function list_startup()
     {
         return view('list_startup');
     }

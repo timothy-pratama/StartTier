@@ -14,7 +14,12 @@ class investorController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index($nama_investor)
+    {
+        return view('home_investor',compact('nama_investor'));
+    }
+
+    public function list_investor()
     {
         return view('list_investor');
     }
