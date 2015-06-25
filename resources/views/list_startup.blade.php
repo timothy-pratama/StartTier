@@ -372,8 +372,8 @@
 </div>
 
 <script>
-    $('#menu_startup').removeClass().addClass("active");
-    $('#menu_investor').removeClass();
     $('#menu_beranda').removeClass();
+    $('#menu_startup').removeClass().addClass('active');
+    $('#menu_investor').removeClass();
 </script>
 @stop

@@ -19,14 +19,13 @@
 
       <ul class="nav navbar-nav navbar-right">
       <li>
-        <form class="navbar-form" role="search" style="margin-right: 29em">
+        <form class="navbar-form" role="search" style="margin-right: 34em">
           <div class="form-group">
               <input type="text" class="form-control" placeholder="Cari" style="width: 20em">
             </div>
           <input type="submit" class="btn btn-default" value="Cari" />
         </form>
       </li>
-      <li><a href="{{route('login')}}">Login</a></li>
       </ul>
     </div>
   </div>

@@ -12,21 +12,20 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li id="menu_beranda" class="active"><a href="{{route('home')}}">Beranda</a></li>
+        <li id="menu_beranda" class="active"><a href="{{route('home_investor',array('nama_perusahaan'=>'Microsoft Corporation'))}}">Beranda</a></li>
         <li id="menu_startup"><a href="{{route('list_startup')}}">Startup</a></li>
         <li id="menu_investor"><a href="{{route('list_investor')}}">Investor</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
       <li>
-        <form class="navbar-form" role="search" style="margin-right: 29em">
+        <form class="navbar-form" role="search" style="margin-right: 34em">
           <div class="form-group">
               <input type="text" class="form-control" placeholder="Cari" style="width: 20em">
             </div>
           <input type="submit" class="btn btn-default" value="Cari" />
         </form>
       </li>
-      <li><a href="{{route('login')}}">Login</a></li>
       </ul>
     </div>
   </div>

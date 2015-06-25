@@ -11,8 +11,8 @@
 </div>
 
 <script>
-    $('#menu_beranda').removeClass().addClass("active");
-    $('#menu_investor').removeClass();
+    $('#menu_beranda').removeClass().addClass('active');
     $('#menu_startup').removeClass();
+    $('#menu_investor').removeClass();
 </script>
 @stop
