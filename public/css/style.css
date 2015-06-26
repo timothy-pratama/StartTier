@@ -885,3 +885,11 @@ li #rating {
     
     padding-right: 25%;
 }
+
+.message-notification{
+    color: #ffffff;
+}
+
+.message-notification :hover{
+    color:  #d5d5d5;
+}
