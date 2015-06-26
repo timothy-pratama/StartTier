@@ -814,3 +814,74 @@ li #rating {
     display: block;
     text-align: center;
 }
+
+.projects {
+    margin: 0;
+
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.section-title {
+    margin-bottom: 2%;
+    
+    padding-bottom: 1%;
+    font-weight: bold;
+    border-bottom: rgb(239, 159, 50);
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+}
+
+.show-more-project {
+    display: block;
+
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.show-more-review {
+    display: block;
+
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+
+.review {
+
+}
+
+.username {
+    font-weight: bold;
+}
+
+.review-header {
+    display: block;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.user-review {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+}
+
+.review-wrapper {
+    background-color: white;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.form-review {
+    padding-left: 25%;
+    
+    padding-right: 25%;
+}
