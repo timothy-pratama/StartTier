@@ -7,21 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class investorController extends Controller
+class guestController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index($nama_investor)
+    public function index()
     {
-        return view('investor.home_investor',compact('nama_investor'));
-    }
-
-    public function list_investor()
-    {
-        return view('list_investor');
+        return view('index');
     }
 
     /**
@@ -86,10 +81,5 @@ class investorController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function profile_investor($nama_investor)
-    {
-        return view('profile_investor',compact('nama_investor'));
     }
 }

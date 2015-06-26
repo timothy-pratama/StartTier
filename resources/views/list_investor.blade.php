@@ -1,7 +1,7 @@
-@extends('header.master')
+@extends('...header.master')
 
 @section('navbar')
-@include('navbar.index')
+@include('...navbar.index')
 @stop
 
 @section('content')
@@ -25,7 +25,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -85,7 +85,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -104,7 +104,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -123,7 +123,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -146,7 +146,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -165,7 +165,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -184,7 +184,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -206,7 +206,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -225,7 +225,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -244,7 +244,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -267,7 +267,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -286,7 +286,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -305,7 +305,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -327,7 +327,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -346,7 +346,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>
@@ -365,7 +365,7 @@
                         </span>
                     </div>
                 </div>
-                <a href="{{route('home_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
+                <a href="{{route('profile_investor', array('nama_investor'=>'Microsoft Corporation'))}}" class="button">Lihat Perusahaan</a>
             </div>
         </div>
     </div>

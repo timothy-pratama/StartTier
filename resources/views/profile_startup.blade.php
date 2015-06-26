@@ -1,7 +1,7 @@
 @extends('header.master')
 
 @section('navbar')
-@include('navbar.home_startup')
+@include('navbar.index')
 @stop
 
 @section('content')
@@ -31,7 +31,7 @@
                 <h2 class="title"><a href="#">Amusphere Virtual Reality</a></h2>
                 <div class="meta-information">
                     <p class="meta">Posted by <a href="#">Asada Shino</a> on May 26, 2015
-                        &nbsp;&bull;&nbsp; <a href="#" class="comments">Comments (73)</a> &nbsp;&bull;&nbsp; <a href="#" class="permalink">Full Project</a></p>
+                        &nbsp;&bull;&nbsp;<a href="#" class="permalink">Full Project</a></p>
                 </div>
                     <div class="entry">
                         <p><img src="{{asset('img/amusphere.png')}}" width="800" height="300" alt="" /></p>
@@ -43,7 +43,7 @@
                             <h2 class="title"><a href="#">Nerve Gear</a></h2>
                             <div class="meta-information">
                                 <p class="meta">Posted by <a href="#">Yuuki Asuna</a> on May 26, 2015
-                                    &nbsp;&bull;&nbsp; <a href="#" class="comments">Comments (90)</a> &nbsp;&bull;&nbsp; <a href="#" class="permalink">Full Project</a></p>
+                                    &nbsp;&bull;&nbsp;<a href="#" class="permalink">Full Project</a></p>
                             </div>
                                 <div class="entry">
                                     <p><img src="{{asset('img/nervegear.png')}}" width="800" height="300" alt="" /></p>
