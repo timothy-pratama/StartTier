@@ -230,7 +230,7 @@
               </div>
               <div class="form-group">
                 <label for="InputReview">Review</label>
-                <textarea class="form-control" id="review" placeholder="Tuliskan Review Anda..." required rows="5" style="resize: vertical"></textarea>
+                <textarea class="form-control" id="review" placeholder="Tuliskan Review Anda" required rows="5" style="resize: vertical"></textarea>
               </div>
               <input type="submit" class="btn btn-primary" value="Tulis" />
             </form>

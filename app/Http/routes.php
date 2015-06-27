@@ -18,3 +18,4 @@ Route::get('/investor/{nama_investor}', ['uses'=>'investorController@index','as'
 
 /* routing startup */
 Route::get('/startup/{nama_startup}', ['uses'=>'startupController@index','as'=>'home_startup']);
+Route::get('/startup/{nama_startup}/token', ['uses'=>'tokenController@index','as'=>'token']);

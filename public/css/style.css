@@ -893,3 +893,55 @@ li #rating {
 .message-notification :hover{
     color:  #d5d5d5;
 }
+
+.token {
+    
+    background-color: white;
+    
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.data-token {
+    border-collapse: separate;
+    
+    border-spacing: 10px;
+}
+
+.data-beli-token {
+    margin-top: 20px;
+
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-bottom-color: #EF9F32;
+    padding-bottom: 10px;
+    margin-left: 120px;
+    margin-right: 120px;
+    font-weight: bold;
+}
+
+.daftar-token {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    text-align: center;
+}
+
+.daftar-token th {
+    text-align: center;
+}
+
+.daftar-token td,th {
+    padding: 5px;
+}
+
+.beli-token {
+    margin-top: 30px;
+    padding-bottom: 43px;
+    
+    padding-top: 22px;
+    background-color: white;
+    border-radius: 20px;
+}

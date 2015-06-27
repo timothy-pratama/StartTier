@@ -12,7 +12,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li id="menu_beranda" class="active"><a href="{{route('home')}}">Beranda</a></li>
+        <li id="menu_beranda" class="active"><a href="{{route('home_startup',array('nama_startup'=>'Bukalapak'))}}">Beranda</a></li>
         <li id="menu_startup"><a href="{{route('list_startup')}}">Startup</a></li>
         <li id="menu_investor"><a href="{{route('list_investor')}}">Investor</a></li>
       </ul>
@@ -36,7 +36,7 @@
         <ul class="dropdown-menu">
           <li><a href="#">Edit Profile</a></li>
           <li><a href="#">Edit Project</a></li>
-          <li><a href="#">Management Token Push</a></li>
+          <li><a href="{{route('token',array('nama_startup'=>'Bukalapak'))}}">Management Token Push</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="#">Logout</a></li>
         </ul>
