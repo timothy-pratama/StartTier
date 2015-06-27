@@ -20,8 +20,8 @@
                     <label for="rating">Rating</label>
                     <div class="statVal">
                         <span class="ui-rater">
-                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:81px"></span></span>
-                            <span class="ui-rater-rating">4.5</span>&#160;(<span class="ui-rater-rateCount">200</span>)
+                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
+                            <span class="ui-rater-rating">5.0</span>&#160;(<span class="ui-rater-rateCount">800</span>)
                         </span>
                     </div>
                 </div>
@@ -141,8 +141,8 @@
                     <label for="rating">Rating</label>
                     <div class="statVal">
                         <span class="ui-rater">
-                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:81px"></span></span>
-                            <span class="ui-rater-rating">4.5</span>&#160;(<span class="ui-rater-rateCount">200</span>)
+                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
+                            <span class="ui-rater-rating">5.0</span>&#160;(<span class="ui-rater-rateCount">800</span>)
                         </span>
                     </div>
                 </div>
@@ -262,8 +262,8 @@
                     <label for="rating">Rating</label>
                     <div class="statVal">
                         <span class="ui-rater">
-                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:81px"></span></span>
-                            <span class="ui-rater-rating">4.5</span>&#160;(<span class="ui-rater-rateCount">200</span>)
+                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
+                            <span class="ui-rater-rating">5.0</span>&#160;(<span class="ui-rater-rateCount">800</span>)
                         </span>
                     </div>
                 </div>
