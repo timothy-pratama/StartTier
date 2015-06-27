@@ -1,7 +1,7 @@
 @extends('...header.master')
 
 @section('navbar')
-@include('...navbar.home_startup')
+@include('navbar.guest')
 @stop
 
 @section('content')
@@ -241,4 +241,11 @@
 
     </div>
 </div>
+
+<script>
+    $('#menu_beranda').removeClass();
+    $('#menu_startup').removeClass();
+    $('#menu_investor').removeClass();
+</script>
+
 @stop

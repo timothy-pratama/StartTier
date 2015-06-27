@@ -1,7 +1,7 @@
 @extends('header.master')
 
 @section('navbar')
-@include('navbar.index')
+@include('navbar.guest')
 @stop
 
 @section('content')
@@ -68,4 +68,11 @@
         <div style="clear: both;">&nbsp;</div>
     </div>
 </div>
+
+<script>
+    $('#menu_beranda').removeClass();
+    $('#menu_startup').removeClass();
+    $('#menu_investor').removeClass();
+</script>
+
 @stop

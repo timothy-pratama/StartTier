@@ -1,7 +1,7 @@
-@extends('...header.master')
+@extends('header.master')
 
 @section('navbar')
-@include('...navbar.index')
+@include('navbar.guest')
 @stop
 
 @section('content')

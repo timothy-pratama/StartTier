@@ -16,12 +16,7 @@ class startupController extends Controller
      */
     public function index($nama_startup)
     {
-        return view('startup.home_startup',compact('nama_startup'));
-    }
-
-    public function list_startup()
-    {
-        return view('list_startup');
+        return view('startup.home_startup', compact('nama_startup'));
     }
 
     /**
@@ -86,10 +81,5 @@ class startupController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function profile_startup($nama_startup)
-    {
-        return view('profile_startup',compact('nama_startup'));
     }
 }

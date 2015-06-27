@@ -19,6 +19,26 @@ class guestController extends Controller
         return view('index');
     }
 
+    public function list_startup()
+    {
+        return view('list_startup');
+    }
+
+    public function list_investor()
+    {
+        return view('list_investor');
+    }
+
+    public function profile_startup($nama_startup)
+    {
+        return view('profile_startup',compact('nama_startup'));
+    }
+
+    public function profile_investor($nama_investor)
+    {
+        return view('profile_investor',compact('nama_investor'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

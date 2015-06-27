@@ -19,11 +19,6 @@ class investorController extends Controller
         return view('investor.home_investor',compact('nama_investor'));
     }
 
-    public function list_investor()
-    {
-        return view('list_investor');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -86,10 +81,5 @@ class investorController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function profile_investor($nama_investor)
-    {
-        return view('profile_investor',compact('nama_investor'));
     }
 }
