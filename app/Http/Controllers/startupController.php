@@ -53,12 +53,24 @@ class startupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $nama_startup
      * @return Response
      */
-    public function edit($id)
+    public function edit($nama_startup)
     {
-        //
+        return view('startup.edit_startup', compact('nama_startup'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  string  $nama_startup
+     * @param  string  $nama_project
+     * @return Response
+     */
+    public function editproject($nama_startup, $nama_project)
+    {
+        return view('startup.edit_startup_project', compact('nama_startup', 'nama_project'));
     }
 
     /**

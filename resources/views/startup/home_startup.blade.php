@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<h1>{{$nama_startup}}</h1>
+<h1>{{$nama_startup}} [<a href="{{route('edit_startup',array('nama_startup'=>'Bukalapak'))}}">Edit</a>]</h1>
 
 <div id="page-bgtop">
     <div id="page-bgbtm">
@@ -91,7 +91,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="post-profile projects">
-                        <h2 class="title"><a href="#">Amusphere Virtual Reality</a></h2>
+                        <h2 class="title"><a href="#">Amusphere Virtual Reality</a> [<a href="{{route('edit_startup_project',array('nama_startup'=>'Bukalapak', 'nama_project'=>'Amusphere Virtual Reality'))}}">Edit</a>]</h2>
                         <div class="meta-information">
                             <p class="meta">Posted by <a href="#">Asada Shino</a> on May 26, 2015
                                 &nbsp;&bull;&nbsp;<a href="#" class="permalink">Full Project</a></p>
@@ -105,7 +105,7 @@
 
                 <div class="col-md-6">
                     <div class="post-profile projects">
-                        <h2 class="title"><a href="#">Nerve Gear</a></h2>
+                        <h2 class="title"><a href="#">Nerve Gear</a> [<a href="{{route('edit_startup_project',array('nama_startup'=>'Bukalapak', 'nama_project'=>'Amusphere Virtual Reality'))}}">Edit</a>]</h2>
                         <div class="meta-information">
                             <p class="meta">Posted by <a href="#">Yuuki Asuna</a> on May 26, 2015
                                 &nbsp;&bull;&nbsp;<a href="#" class="permalink">Full Project</a></p>

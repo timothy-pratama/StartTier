@@ -53,12 +53,12 @@ class investorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $nama_investor
      * @return Response
      */
-    public function edit($id)
+    public function edit($nama_investor)
     {
-        //
+        return view('investor.edit_investor',compact('nama_investor'));
     }
 
     /**

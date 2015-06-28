@@ -15,9 +15,12 @@ Route::get('/profile/startup/{nama_startup}',['uses'=>'guestController@profile_s
 
 /* routing investor */
 Route::get('/investor/{nama_investor}', ['uses'=>'investorController@index','as'=>'home_investor']);
+Route::get('/investor/{nama_investor}/edit', ['uses'=>'investorController@edit','as'=>'edit_investor']);
 
 /* routing startup */
 Route::get('/startup/{nama_startup}', ['uses'=>'startupController@index','as'=>'home_startup']);
+Route::get('/startup/{nama_startup}/edit', ['uses'=>'startupController@edit','as'=>'edit_startup']);
+Route::get('/startup/{nama_startup}/{nama_project}/edit', ['uses'=>'startupController@editproject','as'=>'edit_startup_project']);
 Route::get('/startup/{nama_startup}/token', ['uses'=>'tokenController@index','as'=>'token']);
 
 /* routing email */
