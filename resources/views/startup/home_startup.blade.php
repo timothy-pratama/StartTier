@@ -44,20 +44,20 @@
                                 <tr>
                                     <th>Alamat</th>
                                     <td>
-                                        Plaza City View Lt.2 <br>
-                                        Jl. Kemang Timur No.22 <br>
-                                        Pasar Minggu, <br>
-                                        Pejaten Barat <br>
-                                        Jakarta, Indonesia 12510
+                                        <?php
+                                            $alamat = Session::get('current_user')->alamat_perusahaan;
+                                            $formatted_alamat = nl2br($alamat);
+                                            echo $formatted_alamat;
+                                         ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
-                                    <td>{{$nama_startup}}@hotmail.com</td>
+                                    <td>{{Session::get('current_user')->email}}</td>
                                 </tr>
                                 <tr>
                                     <th>Video</th>
-                                    <td><a href="https://www.youtube.com/watch?v=f7Q4Vf-HwEU">Lihat Video</a></td>
+                                    <td><a href="{{Session::get('current_user')->video}}">Lihat Video</a></td>
                                 </tr>
                                 <tr>
                                     <th>Projects</th>

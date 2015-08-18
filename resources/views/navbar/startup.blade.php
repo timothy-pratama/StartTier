@@ -12,7 +12,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li id="menu_beranda" class="active"><a href="{{route('home_startup',array('nama_startup'=>'Bukalapak'))}}">Beranda</a></li>
+        <li id="menu_beranda" class="active"><a href="{{route('home_startup',array('nama_startup'=>Session::get('current_user')->nama_perusahaan))}}">Beranda</a></li>
         <li id="menu_startup"><a href="{{route('list_startup')}}">Startup</a></li>
         <li id="menu_investor"><a href="{{route('list_investor')}}">Investor</a></li>
       </ul>
@@ -32,11 +32,11 @@
         </button>
       </li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">[username]<span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Session::get('current_user')->username}}<span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="#">Edit Profile</a></li>
           <li><a href="#">Edit Project</a></li>
-          <li><a href="{{route('token',array('nama_startup'=>'Bukalapak'))}}">Management Token Push</a></li>
+          <li><a href="{{route('token',array('nama_startup'=>Session::get('current_user')->nama_perusahaan))}}">Management Token Push</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="#">Logout</a></li>
         </ul>

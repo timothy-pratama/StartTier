@@ -22,7 +22,7 @@
   </div>
   <div class="form-group">
     <label for="inputAlamatPerusahaan">Alamat Perusahaan</label>
-    <input type="text" class="form-control" id="alamatPerusahaan" placeholder="Alamat Perusahaan" name="alamatPerusahaan" required>
+    <textarea rows="4" class="form-control" id="alamatPerusahaan" placeholder="Alamat Perusahaan" name="alamatPerusahaan" required style="resize: vertical"></textarea>
   </div>
   <div class="form-group">
     <label for="inputEmail">Email</label>

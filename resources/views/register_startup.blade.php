@@ -10,7 +10,7 @@
 <form class="login-form" method="post" action="{{route('create_startup')}}">
   <div class="form-group">
     <label for="inputUsername">Username</label>
-    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required pattern="[a-zA-Z0-9_]{1,20}" title="Only alphanumerics and underscore allowed (no spaces allowed), 20 characters maximal" />
+    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required pattern="[a-zA-Z0-9_]{1,20}" title="Only alphanumerics and underscore allowed (no spaces allowed), 20 characters max" />
   </div>
   <div class="form-group">
     <label for="inputPassword">Password</label>
@@ -22,7 +22,7 @@
   </div>
   <div class="form-group">
     <label for="inputAlamatStartup">Alamat Startup</label>
-    <input type="text" class="form-control" id="alamatStartup" placeholder="Alamat Startup" name="alamatStartup" required>
+    <textarea rows="4" class="form-control textarea-alamat" id="alamatStartup" placeholder="Alamat Startup" name="alamatStartup" required style="resize: vertical"></textarea>
   </div>
   <div class="form-group">
     <label for="inputEmail">Email</label>

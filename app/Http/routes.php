@@ -1,6 +1,6 @@
 <?php
 
-/* routing tanpa login (guest) */
+/* routing without login */
 Route::get('/',['uses'=>'guestController@index','as'=>'home']);
 Route::get('/login', ['uses'=>'loginController@index','as'=>'login']);
 
@@ -15,6 +15,8 @@ Route::get('/profile/startup/{nama_startup}',['uses'=>'guestController@profile_s
 
 Route::post('/create_startup',['uses'=>'loginController@createStartup','as'=>'create_startup']);
 Route::post('/create_investor', ['uses'=>'loginController@createInvestor','as'=>'create_investor']);
+
+Route::post('/routes/login',['uses'=>'loginController@login','as'=>'user_login']);
 
 /* routing investor */
 Route::get('/investor/{nama_investor}', ['uses'=>'investorController@index','as'=>'home_investor']);

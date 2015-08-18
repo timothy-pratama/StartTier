@@ -18,13 +18,14 @@ class CreateTables extends Migration
             $table->string('username',20);
             $table->string('password');
             $table->string('nama_perusahaan',50);
-            $table->string('alamat_perusahaan',50);
+            $table->string('alamat_perusahaan');
             $table->text('deskripsi_perusahaan');
             $table->string('email',50);
             $table->float('rating');
             $table->integer('jumlah_pemberi_rating');
             $table->string('video',255);
             $table->string('tipe'); //type == startup || investor
+            $table->integer('token');
             $table->date('created_at');
             $table->date('updated_at');
         });

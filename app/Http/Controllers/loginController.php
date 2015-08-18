@@ -49,6 +49,7 @@ class loginController extends Controller
         $pengguna->tipe = "investor";
         $pengguna->deskripsi_perusahaan = "";
         $pengguna->video = "";
+        $pengguna->token = 0;
         $pengguna->save();
         return redirect()->route('login')->with('username',$request->username);
     }
@@ -66,8 +67,39 @@ class loginController extends Controller
         $pengguna->tipe = "startup";
         $pengguna->deskripsi_perusahaan = "";
         $pengguna->video = "";
+        $pengguna->token = 0;
         $pengguna->save();
         return redirect()->route('login')->with('username',$request->username);
+    }
+
+    public function login(Request $request)
+    {
+        $username = $request->username;
+        $password = $request->password;
+
+        $pengguna = Pengguna::where('username',$username)->first();
+        if(is_null($pengguna))
+        {
+            return redirect()->route('login')->with('login_error','Username atau password salah.');
+        }
+        else
+        {
+            if (Hash::check($password, $pengguna->password)) {
+                $request->session()->put('current_user',$pengguna);
+                if(strcmp($pengguna->tipe,'startup') == 0)
+                {
+                    return redirect()->route('home_startup',['nama_startup'=>$pengguna->nama_perusahaan]);
+                }
+                else
+                {
+                    return redirect()->route('home_investor',['nama_investor'=>$pengguna->nama_perusahaan]);
+                }
+            }
+            else
+            {
+                return redirect()->route('login')->with('login_error','Username atau password salah.');
+            }
+        }
     }
 
     /**
