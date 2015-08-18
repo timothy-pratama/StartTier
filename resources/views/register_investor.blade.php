@@ -7,10 +7,10 @@
 @section('content')
 <h3>Registrasi Investor</h3>
 
-<form class="login-form">
+<form class="login-form" action="{{route('create_investor')}}" method="post">
   <div class="form-group">
     <label for="inputUsername">Username</label>
-    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required pattern="[a-zA-Z0-9_]{1,20}" title="Only alphanumerics and underscore allowed (no spaces allowed), 20 characters max." />
   </div>
   <div class="form-group">
     <label for="inputPassword">Password</label>
@@ -28,6 +28,7 @@
     <label for="inputEmail">Email</label>
     <input type="email" class="form-control" id="email" placeholder="Email yang dapat dihubungi" name="email" required />
   </div>
+  <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>" />
   <input type="submit" class="btn btn-primary" value="Daftar" />
 </form>
 

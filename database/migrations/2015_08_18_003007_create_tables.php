@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTables extends Migration
 {
@@ -15,15 +16,17 @@ class CreateTables extends Migration
         Schema::create('pengguna', function(Blueprint $table) {
             $table->increments('id_user');
             $table->string('username',20);
-            $table->string('password',20);
+            $table->string('password');
             $table->string('nama_perusahaan',50);
             $table->string('alamat_perusahaan',50);
             $table->text('deskripsi_perusahaan');
-            $table->string('kontak',20);
+            $table->string('email',50);
             $table->float('rating');
             $table->integer('jumlah_pemberi_rating');
             $table->string('video',255);
-            $table->string('type',10); //type == startup || investor
+            $table->string('tipe'); //type == startup || investor
+            $table->date('created_at');
+            $table->date('updated_at');
         });
 
         Schema::create('komentar', function(Blueprint $table) {
@@ -32,6 +35,8 @@ class CreateTables extends Migration
             $table->string('nama_komentator', 50);
             $table->text('komentar');
             $table->integer('id_user');
+            $table->date('created_at');
+            $table->date('updated_at');
         });
 
         Schema::create('pesan', function(Blueprint $table) {
@@ -40,6 +45,8 @@ class CreateTables extends Migration
             $table->integer('penerima');
             $table->text('isi_pesan');
             $table->string('box',20);
+            $table->date('created_at');
+            $table->date('updated_at');
         });
 
         Schema::create('project', function(Blueprint $table) {
@@ -49,6 +56,8 @@ class CreateTables extends Migration
             $table->date('project_post_date');
             $table->text('project_description');
             $table->string('project_image_url');
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 

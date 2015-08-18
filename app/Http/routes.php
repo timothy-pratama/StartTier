@@ -13,6 +13,9 @@ Route::get('/list_investor', ['uses'=>'guestController@list_investor', 'as'=>'li
 Route::get('/profile/investor/{nama_investor}',['uses'=>'guestController@profile_investor','as'=>'profile_investor']);
 Route::get('/profile/startup/{nama_startup}',['uses'=>'guestController@profile_startup','as'=>'profile_startup']);
 
+Route::post('/create_startup',['uses'=>'loginController@createStartup','as'=>'create_startup']);
+Route::post('/create_investor', ['uses'=>'loginController@createInvestor','as'=>'create_investor']);
+
 /* routing investor */
 Route::get('/investor/{nama_investor}', ['uses'=>'investorController@index','as'=>'home_investor']);
 Route::get('/investor/{nama_investor}/edit', ['uses'=>'investorController@edit','as'=>'edit_investor']);

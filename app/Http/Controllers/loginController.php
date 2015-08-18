@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Pengguna;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class loginController extends Controller
 {
@@ -32,6 +34,40 @@ class loginController extends Controller
     public function register_investor()
     {
         return view('register_investor');
+    }
+
+    public function createInvestor(Request $request)
+    {
+        $pengguna = new Pengguna();
+        $pengguna->username = $request->username;
+        $pengguna->password = Hash::make($request->password);
+        $pengguna->nama_perusahaan = $request->namaPerusahaan;
+        $pengguna->alamat_perusahaan = $request->alamatPerusahaan;
+        $pengguna->email = $request->email;
+        $pengguna->rating = 0;
+        $pengguna->jumlah_pemberi_rating = 0;
+        $pengguna->tipe = "investor";
+        $pengguna->deskripsi_perusahaan = "";
+        $pengguna->video = "";
+        $pengguna->save();
+        return redirect()->route('login')->with('message','Akun berhasil dibuat. Silakan login.');
+    }
+
+    public function createStartup(Request $request)
+    {
+        $pengguna = new Pengguna();
+        $pengguna->username = $request->username;
+        $pengguna->password = Hash::make($request->password);
+        $pengguna->nama_perusahaan = $request->namaStartup;
+        $pengguna->alamat_perusahaan = $request->alamatStartup;
+        $pengguna->email = $request->email;
+        $pengguna->rating = 0;
+        $pengguna->jumlah_pemberi_rating = 0;
+        $pengguna->tipe = "startup";
+        $pengguna->deskripsi_perusahaan = "";
+        $pengguna->video = "";
+        $pengguna->save();
+        return redirect()->route('login')->with('message','Akun berhasil dibuat. Silakan login.');
     }
 
     /**
