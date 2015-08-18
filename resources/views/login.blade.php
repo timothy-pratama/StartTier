@@ -27,8 +27,9 @@
 
 @include('modal.succesful_register_modal')
 
-@if(session('message'))
+@if(session('username'))
     <script>
+        $('#succesful_register_modal_message').find('b').text('{{session('username')}}');
         $('#succesful_register_modal').modal('show');
     </script>
 @endif

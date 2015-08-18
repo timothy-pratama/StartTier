@@ -50,7 +50,7 @@ class loginController extends Controller
         $pengguna->deskripsi_perusahaan = "";
         $pengguna->video = "";
         $pengguna->save();
-        return redirect()->route('login')->with('message','Akun berhasil dibuat. Silakan login.');
+        return redirect()->route('login')->with('username',$request->username);
     }
 
     public function createStartup(Request $request)
@@ -67,7 +67,7 @@ class loginController extends Controller
         $pengguna->deskripsi_perusahaan = "";
         $pengguna->video = "";
         $pengguna->save();
-        return redirect()->route('login')->with('message','Akun berhasil dibuat. Silakan login.');
+        return redirect()->route('login')->with('username',$request->username);
     }
 
     /**
