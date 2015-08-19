@@ -32,9 +32,8 @@
         </button>
       </li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">[username]<span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session('current_user')->username}}<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li role="separator" class="divider"></li>
           <li><a href="#">Logout</a></li>
         </ul>
       </li>
