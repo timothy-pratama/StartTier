@@ -19,3 +19,31 @@ $factory->define(App\User::class, function ($faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(\App\Pengguna::class, function ($faker) {
+    return [
+        'username' => $faker->userName,
+        'password' => Hash::make('password'),
+        'nama_perusahaan' => $faker->company,
+        'alamat_perusahaan' => $faker->address,
+        'deskripsi_perusahaan' => $faker->paragraph,
+        'email' => $faker->email,
+        'rating' => $faker->randomFloat(null,0,5),
+        'jumlah_pemberi_rating' => mt_rand(1,99999),
+        'video' => $faker->url,
+        'tipe' => 'investor',
+        'token' => $faker->randomNumber(5),
+        'created_at' => $faker->dateTimeThisYear,
+        'updated_at' => $faker->dateTimeThisYear,
+    ];
+});
+
+$factory->defineAs(\App\Pengguna::class, 'investor', function($faker) use ($factory) {
+    $pengguna = $factory->raw(\App\Pengguna::class);
+    return array_merge($pengguna, ['tipe' => 'investor']);
+});
+
+$factory->defineAs(\App\Pengguna::class, 'startup', function($faker) use ($factory) {
+    $pengguna = $factory->raw(\App\Pengguna::class);
+    return array_merge($pengguna, ['tipe' => 'startup']);
+});
