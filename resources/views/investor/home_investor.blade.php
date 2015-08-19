@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<h1>{{$nama_investor}} [<a href="{{route('edit_investor',array('nama_investor'=>'Microsoft'))}}">Edit</a>]</h1>
+<h1>{{$nama_investor}} [<a href="{{route('edit_investor',array('nama_investor'=>$nama_investor))}}">Edit</a>]</h1>
 
 <div id="page-bgtop">
     <div id="page-bgbtm">

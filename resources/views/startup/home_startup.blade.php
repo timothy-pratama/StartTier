@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<h1>{{$nama_startup}} [<a href="{{route('edit_startup',array('nama_startup'=>'Bukalapak'))}}">Edit</a>]</h1>
+<h1>{{$nama_startup}} [<a href="{{route('edit_startup',array('nama_startup'=>$nama_startup))}}">Edit</a>]</h1>
 
 <div id="page-bgtop">
     <div id="page-bgbtm">

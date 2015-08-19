@@ -15,9 +15,9 @@ class CreateTables extends Migration
     {
         Schema::create('pengguna', function(Blueprint $table) {
             $table->increments('id_user');
-            $table->string('username',20);
+            $table->string('username');
             $table->string('password');
-            $table->string('nama_perusahaan',50);
+            $table->string('nama_perusahaan');
             $table->string('alamat_perusahaan');
             $table->text('deskripsi_perusahaan');
             $table->string('email',50);
@@ -34,8 +34,8 @@ class CreateTables extends Migration
 
         Schema::create('komentar', function(Blueprint $table) {
             $table->increments('id_komentar');
-            $table->string('email_komentator',50);
-            $table->string('nama_komentator', 50);
+            $table->string('email_komentator');
+            $table->string('nama_komentator');
             $table->text('komentar');
             $table->integer('id_user');
             $table->date('created_at');
@@ -47,7 +47,7 @@ class CreateTables extends Migration
             $table->integer('pengirim');
             $table->integer('penerima');
             $table->text('isi_pesan');
-            $table->string('box',20);
+            $table->string('box');
             $table->date('created_at');
             $table->date('updated_at');
         });

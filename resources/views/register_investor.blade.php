@@ -10,7 +10,7 @@
 <form class="login-form" action="{{route('create_investor')}}" method="post">
   <div class="form-group">
     <label for="inputUsername">Username</label>
-    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required pattern="[a-zA-Z0-9_\-\.]{1,20}" title="Only alphanumerics . - and _ allowed (no spaces allowed), 20 characters max" />
+    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required pattern="[a-zA-Z0-9_\-\.]{1,20}" title="Only alphanumerics . - and _ allowed (no spaces allowed)" />
   </div>
   <div class="form-group">
     <label for="inputPassword">Password</label>
