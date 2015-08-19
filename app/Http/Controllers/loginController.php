@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class loginController extends Controller
 {
@@ -114,6 +115,13 @@ class loginController extends Controller
                 return redirect()->route('login')->with('login_error','Username atau password salah.');
             }
         }
+    }
+
+    public function logout()
+    {
+        $cookie = Cookie::forget('current_user');
+        Session::forget('current_user');
+        return redirect()->route('home')->withCookie($cookie)->with("successful_logout_message","Anda berhasil logout.");
     }
 
     /**

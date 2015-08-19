@@ -1,8 +1,21 @@
 @extends('header.master')
 
 @section('navbar')
-@include('navbar.guest')
-@stop
+@if(isset($cookie))
+    <?php
+        $pengguna = \App\Pengguna::where('username',$cookie)->first();
+        Session::put('current_user',$pengguna);
+    ?>
+
+    @if(strcmp(session('current_user')->tipe,'startup') == 0)
+        @include('navbar.startup')
+    @else
+        @include('navbar.investor')
+    @endif
+@else
+    @include('navbar.guest')
+@endif
+@endsection
 
 @section('content')
 <div id="logo" class="vestibule-container">

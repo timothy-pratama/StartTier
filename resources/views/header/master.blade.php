@@ -16,7 +16,7 @@
 <body>
 <div id="wrapper">
 
-    @yield('navbar');
+    @yield('navbar')
 
 	@yield('content')
 

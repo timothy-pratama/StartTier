@@ -36,7 +36,7 @@
         <ul class="dropdown-menu">
           <li><a href="{{route('token',array('nama_startup'=>Session::get('current_user')->nama_perusahaan))}}">Management Token Push</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="{{route('user_logout')}}">Logout</a></li>
         </ul>
        </li>
       </ul>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cookie;
 
 class guestController extends Controller
 {
@@ -16,17 +17,20 @@ class guestController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $cookie = Cookie::get('current_user');
+        return view('index',compact('cookie'));
     }
 
     public function list_startup()
     {
-        return view('list_startup');
+        $cookie = Cookie::get('current_user');
+        return view('list_startup', compact('cookie'));
     }
 
     public function list_investor()
     {
-        return view('list_investor');
+        $cookie = Cookie::get('current_user');
+        return view('list_investor', compact('cookie'));
     }
 
     public function profile_startup($nama_startup)
