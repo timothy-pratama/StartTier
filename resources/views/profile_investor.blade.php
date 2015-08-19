@@ -66,6 +66,125 @@
         </div>
         <!-- end #sidebar -->
         <div style="clear: both;">&nbsp;</div>
+
+        <h1 class="section-title">Reviews</h1>
+
+        <div class="review">
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="review-wrapper">
+                        <div class="review-header">
+                            <h5 class="username">Gunarto Darsan</h5>
+                            <div id="rating" class="stat">
+                                <div class="statVal">
+                                    <span class="ui-rater">
+                                        <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
+                                        <span class="ui-rater-rating">5.0</span>&#160;
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p class="user-review">
+                                love it banget manteb dah... recommended marketplace
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="review-wrapper">
+                        <div class="review-header">
+                            <h5 class="username">Huang Ruliang</h5>
+                            <div id="rating" class="stat">
+                                <div class="statVal">
+                                    <span class="ui-rater">
+                                        <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
+                                        <span class="ui-rater-rating">5.0</span>&#160;
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p class="user-review">
+                                aman dan to the point bgt bagus makin hari makin semangat buka app ini.ditingkatkan terus !!
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="review-wrapper">
+                        <div class="review-header">
+                            <h5 class="username">Fajrin Rasyid</h5>
+                            <div id="rating" class="stat">
+                                <div class="statVal">
+                                    <span class="ui-rater">
+                                        <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
+                                        <span class="ui-rater-rating">5.0</span>&#160;
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p class="user-review">
+                                Very fast, cocok untuk segala penjual As described, sangat cepat dan halus. Penjual partai besar maupun kecil harus mencoba :)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="review-wrapper">
+                        <div class="review-header">
+                            <h5 class="username">Cemy Nugroho</h5>
+                            <div id="rating" class="stat">
+                                <div class="statVal">
+                                    <span class="ui-rater">
+                                        <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
+                                        <span class="ui-rater-rating">5.0</span>&#160;
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p class="user-review">
+                                Best Online Shop Aplikasi ini sgt membantu sy dlm membeli barang atau menjual barang, this is the best online shop, easy n safety for shop. Awesome
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <a class="show-more-review" href="#">Show More Reviews</a>
+        </div>
+
+        <h1 class="section-title">Tulis Review</h1>
+
+        <form class="form-review">
+          <div class="form-group">
+            <label for="InputName">Nama</label>
+            <input type="text" class="form-control" id="name" placeholder="Nama" required>
+          </div>
+          <div class="form-group">
+            <label for="InputEmailAddress">Alamat Email</label>
+            <input type="email" class="form-control" id="emailAddress" placeholder="Alamat Email" required>
+          </div>
+          <div class="form-group">
+            <label for="InputReview">Review</label>
+            <textarea class="form-control" id="review" placeholder="Tuliskan Review Anda" required rows="5" style="resize: vertical"></textarea>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Tulis" />
+        </form>
+
+    </div>
+
+    <div style="clear: both;">&nbsp;</div>
+
+</div>
     </div>
 </div>
 
