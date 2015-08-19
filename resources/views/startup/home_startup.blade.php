@@ -14,8 +14,16 @@
             <div class="post-profile">
                 <h2>Deskripsi Startup</h2>
                 <div class="entry">
+                    @if(session('current_user')->full_logo_perusahaan === "")
+                    <img src="{{asset('img/missing_image.png')}}" width="800" height="300" alt="" />
+                    @else
                     <img src="{{session('current_user')->full_logo_perusahaan}}" width="800" height="300" alt="" />
+                    @endif
+                    @if(session('current_user')->deskripsi_perusahaan === "")
+                    <p>Belum ada deskripsi</p>
+                    @else
                     <p>{{session('current_user')->deskripsi_perusahaan}}</p>
+                    @endif
                 </div>
             </div>
 
@@ -25,7 +33,11 @@
             <ul>
                 <li>
                     <h2>Profile Startup</h2>
+                    @if(session('current_user')->logo_perusahaan === "")
+                    <img src="{{asset('img/missing_image.png')}}" />
+                    @else
                     <img src="{{session('current_user')->logo_perusahaan}}" />
+                    @endif
                     <ul>
                         <li>
                             <table class="table-profile">
@@ -49,7 +61,11 @@
                                 </tr>
                                 <tr>
                                     <th>Video</th>
+                                    @if(session('current_user')->video === "")
+                                    <td>Belum ada</td>
+                                    @else
                                     <td><a href="{{Session::get('current_user')->video}}">Lihat Video</a></td>
+                                    @endif
                                 </tr>
                                 <tr>
                                     <th>Projects</th>
@@ -208,24 +224,6 @@
             <div class="row">
                 <a class="show-more-review" href="#">Show More Reviews</a>
             </div>
-
-            <h1 class="section-title">Tulis Review</h1>
-
-            <form class="form-review">
-              <div class="form-group">
-                <label for="InputName">Nama</label>
-                <input type="text" class="form-control" id="name" placeholder="Nama" required>
-              </div>
-              <div class="form-group">
-                <label for="InputEmailAddress">Alamat Email</label>
-                <input type="email" class="form-control" id="emailAddress" placeholder="Alamat Email" required>
-              </div>
-              <div class="form-group">
-                <label for="InputReview">Review</label>
-                <textarea class="form-control" id="review" placeholder="Tuliskan Review Anda..." required rows="5" style="resize: vertical"></textarea>
-              </div>
-              <input type="submit" class="btn btn-primary" value="Tulis" />
-            </form>
 
         </div>
 

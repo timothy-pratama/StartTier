@@ -20,7 +20,7 @@
 @section('content')
 <div class="jumbotron">
   <h1>StartTier</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris hendrerit tristique velit pretium malesuada. Sed gravida lacus nec pretium egestas. Donec tincidunt fermentum purus non ultrices. Pellentesque at justo at magna facilisis tincidunt eget a lacus. Praesent ipsum dolor, aliquet et tincidunt ac, laoreet et augue. Pellentesque ultrices nisi id nunc faucibus, non bibendum augue sagittis. Integer non ante lacus. Quisque et dictum ante. Etiam ligula nisi, pellentesque at gravida ac, posuere id nisi. Curabitur sed rutrum elit, a finibus nulla. Praesent scelerisque dignissim velit ac vulputate. Nunc at ultrices lacus. In condimentum ac magna quis vulputate. Aliquam sem nunc, lacinia egestas aliquam quis, placerat vel nunc. Vivamus lacinia odio blandit nulla interdum luctus.</p>
+  <p>StartTier adalah sebuah situs yang menyediakan layanan untuk menghubungkan startup dan calon investor. Tujuannya adalah untuk membantu startup-startup yang baru berkembang dalam mengembangkan bisnisnya dengan bantuan dari investor. Dengan adanya startup-startup ini diharapkan akan membantu meningkatkan perekonomian Indonesia pada masa yang akan datang.</p>
 </div>
 
 @include('modal.basic_modal')

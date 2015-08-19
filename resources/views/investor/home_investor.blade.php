@@ -13,8 +13,16 @@
             <div class="post-profile">
                 <h2>Deskripsi Perusahaan</h2>
                 <div class="entry">
+                    @if(session('current_user')->full_logo_perusahaan === "")
+                    <img src="{{asset('img/missing_image.png')}}" width="800" height="300" alt="" />
+                    @else
                     <img src="{{session('current_user')->full_logo_perusahaan}}" width="800" height="300" alt="" />
+                    @endif
+                    @if(session('current_user')->deskripsi_perusahaan === "")
+                    <p>Belum ada deskripsi</p>
+                    @else
                     <p>{{session('current_user')->deskripsi_perusahaan}}</p>
+                    @endif
                 </div>
             </div>
             <div style="clear: both;">&nbsp;</div>
@@ -24,7 +32,11 @@
             <ul>
                 <li>
                     <h2>Profile Perusahaan</h2>
+                    @if(session('current_user')->logo_perusahaan === "")
+                    <img src="{{asset('img/missing_image.png')}}" />
+                    @else
                     <img src="{{session('current_user')->logo_perusahaan}}" />
+                    @endif
                     <ul>
                         <li>
                             <table class="table-profile">
