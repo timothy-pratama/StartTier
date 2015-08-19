@@ -22,7 +22,13 @@
                     @if(session('current_user')->deskripsi_perusahaan === "")
                     <p>Belum ada deskripsi</p>
                     @else
-                    <p>{{session('current_user')->deskripsi_perusahaan}}</p>
+                    <p>
+                        <?php
+                            $deskripsi_perusahaan = session('current_user')->deskripsi_perusahaan;
+                            $formatted_perusahaan = nl2br($deskripsi_perusahaan);
+                            echo $formatted_perusahaan;
+                        ?>
+                    </p>
                     @endif
                 </div>
             </div>
