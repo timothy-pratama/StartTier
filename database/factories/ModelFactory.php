@@ -20,21 +20,23 @@ $factory->define(App\User::class, function ($faker) {
     ];
 });
 
-$factory->define(\App\Pengguna::class, function ($faker) {
+$factory->define(\App\Pengguna::class, function (Faker\Generator $faker) {
     return [
         'username' => $faker->userName,
         'password' => Hash::make('password'),
         'nama_perusahaan' => $faker->company,
         'alamat_perusahaan' => $faker->address,
-        'deskripsi_perusahaan' => $faker->paragraph,
+        'deskripsi_perusahaan' => $faker->realText(1000),
         'email' => $faker->email,
         'rating' => $faker->randomFloat(null,0,5),
         'jumlah_pemberi_rating' => mt_rand(1,99999),
         'video' => $faker->url,
         'tipe' => 'investor',
-        'token' => $faker->randomNumber(5),
+        'token' => $faker->randomNumber(3),
         'created_at' => $faker->dateTimeThisYear,
         'updated_at' => $faker->dateTimeThisYear,
+        'full_logo_perusahaan' => $faker->imageUrl(),
+        'logo_perusahaan' => $faker->imageUrl(),
     ];
 });
 

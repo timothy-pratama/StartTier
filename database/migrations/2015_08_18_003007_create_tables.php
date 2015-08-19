@@ -28,6 +28,8 @@ class CreateTables extends Migration
             $table->integer('token');
             $table->date('created_at');
             $table->date('updated_at');
+            $table->string('logo_perusahaan');
+            $table->string('full_logo_perusahaan');
         });
 
         Schema::create('komentar', function(Blueprint $table) {

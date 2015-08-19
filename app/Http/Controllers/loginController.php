@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
 class loginController extends Controller
@@ -50,6 +51,8 @@ class loginController extends Controller
         $pengguna->deskripsi_perusahaan = "";
         $pengguna->video = "";
         $pengguna->token = 0;
+        $pengguna->logo_perusahaan = "";
+        $pengguna->full_logo_perusahaan = "";
         $pengguna->save();
         return redirect()->route('login')->with('username',$request->username);
     }
@@ -68,6 +71,8 @@ class loginController extends Controller
         $pengguna->deskripsi_perusahaan = "";
         $pengguna->video = "";
         $pengguna->token = 0;
+        $pengguna->logo_perusahaan = "";
+        $pengguna->full_logo_perusahaan = "";
         $pengguna->save();
         return redirect()->route('login')->with('username',$request->username);
     }
@@ -84,15 +89,24 @@ class loginController extends Controller
         }
         else
         {
+            if($request->has('rememberMe'))
+            {
+                $cookie = Cookie::forever('current_user', $username);
+            }
+            else
+            {
+                $cookie = Cookie::make('current_user', $username, 0);
+            }
+
             if (Hash::check($password, $pengguna->password)) {
                 $request->session()->put('current_user',$pengguna);
                 if(strcmp($pengguna->tipe,'startup') == 0)
                 {
-                    return redirect()->route('home_startup',['nama_startup'=>$pengguna->nama_perusahaan]);
+                    return redirect()->route('home_startup',['nama_startup'=>$pengguna->nama_perusahaan])->withCookie($cookie);
                 }
                 else
                 {
-                    return redirect()->route('home_investor',['nama_investor'=>$pengguna->nama_perusahaan]);
+                    return redirect()->route('home_investor',['nama_investor'=>$pengguna->nama_perusahaan])->withCookie($cookie);
                 }
             }
             else

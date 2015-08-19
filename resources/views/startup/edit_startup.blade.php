@@ -36,7 +36,7 @@ Jakarta, Indonesia 12510"</textarea>
                     <label for="logo_startup">Logo Startup</label>
                     <input type="file" id="logo_startup">
                 </div>
-                <button type="submit" class="btn btn-default">Save</button>
+                <button type="submit" class="btn btn-default">Simpan</button>
             </form>
         </div>
         <div class="jumbotron">
@@ -58,7 +58,7 @@ Saat ini BukaLapak.com telah berhasil memfasilitasi transaksi online harian seni
                     <label for="full_logo_startup">Logo Penuh Startup</label>
                     <input type="file" id="full_logo_startup">
                 </div>
-                <button type="submit" class="btn btn-default">Save</button>
+                <button type="submit" class="btn btn-default">Simpan</button>
             </form>
         </div>
     </div>

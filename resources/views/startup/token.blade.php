@@ -13,7 +13,7 @@
             <table class="data-token">
                 <tr>
                     <th style="width: 35%; vertical-align: middle">Jumlah Token Up:</th>
-                    <td style="width: 43%; vertical-align: middle">100</td>
+                    <td style="width: 43%; vertical-align: middle">{{session('current_user')->token}}</td>
                     <td style="widows: 22%;">
                         <button class="btn btn-primary">Gunakan</button>
                     </td>

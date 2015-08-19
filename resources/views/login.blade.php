@@ -17,7 +17,7 @@
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" id="rememberMe" name="rememberMe"> Remember me
+      <input type="checkbox" id="rememberMe" name="rememberMe"> Tetap Login
     </label>
   </div>
   <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">

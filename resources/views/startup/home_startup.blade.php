@@ -14,16 +14,8 @@
             <div class="post-profile">
                 <h2>Deskripsi Startup</h2>
                 <div class="entry">
-                    <img src="{{asset('img/logo_4.png')}}" width="800" height="300" alt="" />
-                    <p>Sekilas, BukaLapak.com memiliki konsep yang hampir sama dengan situs-situs lain yang memfasilitasi transaksi jual beli online di Indonesia. Namun ternyata sistem transaksi di BukaLapak.com di desain sedemikian rupa untuk menjaga keamanan pihak penjual maupun pembeli. Pihak penjual mendapat kesempatan untuk memasarkan segala produk jadi (non jasa dan non franchise) yang dilengkapi dengan deskripsi dan foto produk.
-
-                       Peraturan yang diterapkan BukaLapak.com pun cukup ketat, misalnya larangan copy paste dari penjual lainnya serta larangan untuk mencantumkan alamat, nomor rekening dan kontak pribadi di BukaLapak.com. Dengan demikian seluruh proses transaksi dan pembayaran akan difasilitasi dan dijamin keamanannya oleh BukaLapak.com.
-
-                       Proses pembayaran dari pihak pembeli akan difasilitasi oleh BukaLapak.com sesuai dengan peraturan yang berlaku. Sistem ini mungkin lebih dikenal dengan istilah Marketplace C2C. Setelah pembayaran selesai dilakukan, BukaLapak.com akan memberikan konfirmasi pada pihak penjual untuk mengirimkan barang ke alamat pembeli. Setelah barang diterima oleh pembeli, BukaLapak.com akan melakukan pencairan dana untuk pihak penjual.
-
-                       Rangkaian proses transaksi tersebut mudah dilakukan dengan mengikuti petunjuak yang sudah disediakan BukaLapak.com. Selain itu, BukaLapak.com juga akan memberikan tindakan mediasi, banned akun atau pelaporan pada pihak berwajib terhadap penjual yang melakukan penipuan dalam proses transaksi.
-
-                       Saat ini BukaLapak.com telah berhasil memfasilitasi transaksi online harian senilai US$ 43,000 (sekitar lima ratus juta rupiah). Sebuah angka fantastis untuk sebuah startup original karya anak Indonesia. Semoga kesuksesan BukaLapak.com dapat menjadi acuan bagi putra-putri bangsa lainnya untuk membuat beragam karya inovatif yang bermanfaat bagi bangsa Indonesia.</p>
+                    <img src="{{session('current_user')->full_logo_perusahaan}}" width="800" height="300" alt="" />
+                    <p>{{session('current_user')->deskripsi_perusahaan}}</p>
                 </div>
             </div>
 
@@ -33,7 +25,7 @@
             <ul>
                 <li>
                     <h2>Profile Startup</h2>
-                    <img src="{{asset('img/bukalapak_small_logo.png')}}" />
+                    <img src="{{session('current_user')->logo_perusahaan}}" />
                     <ul>
                         <li>
                             <table class="table-profile">
@@ -72,8 +64,8 @@
                     <div id="rating" class="stat">
                         <div class="statVal">
                             <span class="ui-rater">
-                                <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
-                                <span class="ui-rater-rating">5.0</span>&#160;(<span class="ui-rater-rateCount">800</span>)
+                                <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:{{session('current_user')->rating / 5 * 90}}px"></span></span>
+                                <span class="ui-rater-rating">{{session('current_user')->rating}}</span>&#160;(<span class="ui-rater-rateCount">{{session('current_user')->jumlah_pemberi_rating}}</span>)
                             </span>
                         </div>
                     </div>
