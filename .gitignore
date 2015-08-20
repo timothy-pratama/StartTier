@@ -4,3 +4,4 @@ Homestead.yaml
 .env
 composer.lock
 .idea/
+/public/user_uploaded_files

@@ -15,25 +15,25 @@
             <form action="{{route('edit_profil_startup', ['nama_startup'=>$nama_startup])}}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nama_startup">Nama Startup</label>
-                    <input type="text" class="form-control" id="nama_startup" name="nama_startup" value="{{$nama_startup}}">
+                    <input type="text" class="form-control" id="nama_startup" name="nama_startup" value="{{$nama_startup}}" required>
                 </div>
                 <div class="form-group">
                     <label for="alamat_startup">Alamat Startup</label>
-                    <textarea class="form-control" rows="4" id="alamat_startup" name="alamat_startup" style="resize: vertical">{{session('current_user')->alamat_perusahaan}}</textarea>
+                    <textarea class="form-control" rows="4" id="alamat_startup" name="alamat_startup" style="resize: vertical" required>{{session('current_user')->alamat_perusahaan}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="email_startup">Email Startup</label>
-                    <input type="email" class="form-control" id="email_startup" name="email_startup" value="{{session('current_user')->email}}">
+                    <input type="email" class="form-control" id="email_startup" name="email_startup" value="{{session('current_user')->email}}" required>
                 </div>
                 <div class="form-group">
                     <label for="video_startup">Video Startup</label>
-                    <input type="text" class="form-control" id="video_startup" name="video_startup" value="{{session('current_user')->video}}">
+                    <input type="text" class="form-control" id="video_startup" name="video_startup" value="{{session('current_user')->video}}" required>
                 </div>
                 <div class="form-group">
                     <label for="logo_startup">Logo Startup</label>
                     <input type="file" id="logo_startup" name="logo_startup">
                 </div>
-                <input type="submit" class="btn btn-default" value="Simpan"></button>
+                <input type="submit" class="btn btn-default" value="Simpan">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </form>
 
@@ -44,13 +44,13 @@
             <form action="{{route('edit_detil_startup', array('nama_startup'=>$nama_startup))}}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="deskripsi_startup">Deskripsi Startup</label>
-                    <textarea class="form-control" rows="10" id="deskripsi_startup" name="deskripsi_startup" style="resize: vertical">{{session('current_user')->deskripsi_perusahaan}}</textarea>
+                    <textarea class="form-control" rows="10" id="deskripsi_startup" name="deskripsi_startup" style="resize: vertical" required>{{session('current_user')->deskripsi_perusahaan}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="full_logo_startup">Logo Penuh Startup</label>
                     <input type="file" id="full_logo_startup" name="full_logo_startup">
                 </div>
-                <input type="submit" class="btn btn-default" value="Simpan"></button>
+                <input type="submit" class="btn btn-default" value="Simpan">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
             </form>
 
