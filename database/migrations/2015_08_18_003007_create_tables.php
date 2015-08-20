@@ -39,6 +39,7 @@ class CreateTables extends Migration
             $table->string('nama_komentator');
             $table->text('komentar');
             $table->integer('id_user');
+            $table->integer('rating_score');
             $table->date('created_at');
             $table->date('updated_at');
         });

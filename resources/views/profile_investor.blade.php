@@ -167,15 +167,15 @@
         <form class="form-review">
           <div class="form-group">
             <label for="InputName">Nama</label>
-            <input type="text" class="form-control" id="name" placeholder="Nama" required>
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama" required>
           </div>
           <div class="form-group">
             <label for="InputEmailAddress">Alamat Email</label>
-            <input type="email" class="form-control" id="emailAddress" placeholder="Alamat Email" required>
+            <input type="email" class="form-control" id="emailAddress" name="email" placeholder="Alamat Email" required>
           </div>
           <div class="form-group">
             <label for="InputReview">Review</label>
-            <textarea class="form-control" id="review" placeholder="Tuliskan Review Anda" required rows="5" style="resize: vertical"></textarea>
+            <textarea class="form-control" id="review" name="review" placeholder="Tuliskan Review Anda" required rows="5" style="resize: vertical"></textarea>
           </div>
           <input type="submit" class="btn btn-primary" value="Tulis" />
         </form>
