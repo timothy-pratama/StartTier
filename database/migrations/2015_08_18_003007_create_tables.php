@@ -35,10 +35,10 @@ class CreateTables extends Migration
 
         Schema::create('komentar', function(Blueprint $table) {
             $table->increments('id_komentar');
+            $table->integer('id_user');
             $table->string('email_komentator');
             $table->string('nama_komentator');
             $table->text('komentar');
-            $table->integer('id_user');
             $table->integer('rating_score');
             $table->date('created_at');
             $table->date('updated_at');
@@ -46,8 +46,8 @@ class CreateTables extends Migration
 
         Schema::create('pesan', function(Blueprint $table) {
             $table->increments('id_pesan');
-            $table->integer('pengirim');
-            $table->integer('penerima');
+            $table->integer('id_sender');
+            $table->integer('id_receiver');
             $table->text('isi_pesan');
             $table->string('box');
             $table->date('created_at');
@@ -56,6 +56,7 @@ class CreateTables extends Migration
 
         Schema::create('project', function(Blueprint $table) {
             $table->increments('id_project');
+            $table->integer('id_project_owner');
             $table->string('project_title');
             $table->string('project_creator');
             $table->date('project_post_date');
