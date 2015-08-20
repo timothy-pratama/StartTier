@@ -30,6 +30,7 @@ class CreateTables extends Migration
             $table->date('updated_at');
             $table->string('logo_perusahaan');
             $table->string('full_logo_perusahaan');
+            $table->date('pushed_at');
         });
 
         Schema::create('komentar', function(Blueprint $table) {

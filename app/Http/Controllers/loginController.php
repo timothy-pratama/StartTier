@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Pengguna;
+use Carbon\Carbon;
+use Faker\Provider\tr_TR\DateTime;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -54,6 +56,7 @@ class loginController extends Controller
         $pengguna->token = 0;
         $pengguna->logo_perusahaan = "";
         $pengguna->full_logo_perusahaan = "";
+        $pengguna->pushed_at = new \DateTime('now');
         $pengguna->save();
         return redirect()->route('login')->with('username',$request->username);
     }
@@ -74,6 +77,7 @@ class loginController extends Controller
         $pengguna->token = 0;
         $pengguna->logo_perusahaan = "";
         $pengguna->full_logo_perusahaan = "";
+        $pengguna->pushed_at = new \DateTime('now');
         $pengguna->save();
         return redirect()->route('login')->with('username',$request->username);
     }

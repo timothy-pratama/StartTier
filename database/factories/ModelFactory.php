@@ -37,6 +37,7 @@ $factory->define(\App\Pengguna::class, function (Faker\Generator $faker) {
         'updated_at' => $faker->dateTimeThisYear,
         'full_logo_perusahaan' => $faker->imageUrl(),
         'logo_perusahaan' => $faker->imageUrl(),
+        'pushed_at' => $faker->dateTimeThisYear,
     ];
 });
 
