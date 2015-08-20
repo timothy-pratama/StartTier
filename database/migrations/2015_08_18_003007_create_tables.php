@@ -58,7 +58,6 @@ class CreateTables extends Migration
             $table->increments('id_project');
             $table->integer('id_project_owner');
             $table->string('project_title');
-            $table->string('project_creator');
             $table->date('project_post_date');
             $table->text('project_description');
             $table->string('project_image_url');

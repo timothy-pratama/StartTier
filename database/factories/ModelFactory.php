@@ -26,7 +26,7 @@ $factory->define(\App\Pengguna::class, function (Faker\Generator $faker) {
         'password' => Hash::make('password'),
         'nama_perusahaan' => $faker->company,
         'alamat_perusahaan' => $faker->address,
-        'deskripsi_perusahaan' => $faker->realText(1000),
+        'deskripsi_perusahaan' => $faker->realText(mt_rand(1000,1500)),
         'email' => $faker->email,
         'rating' => $faker->randomFloat(null,0,5),
         'jumlah_pemberi_rating' => mt_rand(1,99999),
@@ -49,4 +49,26 @@ $factory->defineAs(\App\Pengguna::class, 'investor', function($faker) use ($fact
 $factory->defineAs(\App\Pengguna::class, 'startup', function($faker) use ($factory) {
     $pengguna = $factory->raw(\App\Pengguna::class);
     return array_merge($pengguna, ['tipe' => 'startup']);
+});
+
+$factory->define(\App\Komentar::class, function(Faker\Generator $faker) {
+   return [
+        'email_komentator'=>$faker->email,
+        'nama_komentator'=>$faker->name,
+        'komentar'=>$faker->realText(),
+        'rating_score'=>$faker->numberBetween(1,5),
+        'created_at'=>$faker->dateTimeThisYear,
+        'updated_at'=>$faker->dateTimeThisYear,
+   ];
+});
+
+$factory->define(\App\Project::class, function(Faker\Generator $faker) {
+   return [
+        'project_title'=>$faker->sentence(mt_rand(3,6)),
+        'project_post_date'=>$faker->dateTimeThisYear,
+        'project_description'=>$faker->realText(mt_rand(1000,1500)),
+        'project_image_url'=>$faker->imageUrl(),
+        'created_at'=>$faker->dateTimeThisYear,
+        'updated_at'=>$faker->dateTimeThisYear,
+   ];
 });

@@ -13,4 +13,9 @@ class Pengguna extends Model
     {
         return $this->hasMany('App\Komentar','id_user','id_user');
     }
+
+    public function projects()
+    {
+        return$this->hasMany('App\Project','id_project_owner','id_user');
+    }
 }
