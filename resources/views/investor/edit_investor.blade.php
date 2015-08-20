@@ -12,7 +12,7 @@
 		<div class="jumbotron">
 			<h3>Profil Perusahaan</h3>
 
-			<form action="{{route('edit_profil_investor', array('nama_investor'=>$nama_investor))}}" method="post">
+			<form action="{{route('edit_profil_investor', array('nama_investor'=>$nama_investor))}}" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="nama_perusahaan">Nama Perusahaan</label>
 					<input type="text" class="form-control" name="nama_perusahaan" id="nama_perusahaan" value="{{$nama_investor}}">
@@ -37,7 +37,7 @@
 		<div class="jumbotron">
 			<h3>Detil Perusahaan</h3>
 
-			<form action="{{route('edit_detil_investor', array('nama_investor'=>$nama_investor))}}" method="post">
+			<form action="{{route('edit_detil_investor', array('nama_investor'=>$nama_investor))}}" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="deskripsi_perusahaan">Deskripsi Perusahaan</label>
 					<textarea class="form-control" rows="10" id="deskripsi_perusahaan" name="deskripsi_perusahaan">{{session('current_user')->deskripsi_perusahaan}}</textarea>

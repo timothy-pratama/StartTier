@@ -12,7 +12,7 @@
         <div class="jumbotron">
             <h3>Profil Startup</h3>
 
-            <form action="{{route('edit_profil_startup', array('nama_startup'=>$nama_startup))}}" method="post">
+            <form action="{{route('edit_profil_startup', ['nama_startup'=>$nama_startup])}}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nama_startup">Nama Startup</label>
                     <input type="text" class="form-control" id="nama_startup" name="nama_startup" value="{{$nama_startup}}">
@@ -41,7 +41,7 @@
         <div class="jumbotron">
             <h3>Detil Startup</h3>
 
-            <form action="{{route('edit_detil_startup', array('nama_startup'=>$nama_startup))}}" method="post">
+            <form action="{{route('edit_detil_startup', array('nama_startup'=>$nama_startup))}}" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="deskripsi_startup">Deskripsi Startup</label>
                     <textarea class="form-control" rows="10" id="deskripsi_startup" name="deskripsi_startup" style="resize: vertical">{{session('current_user')->deskripsi_perusahaan}}</textarea>

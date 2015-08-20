@@ -11,6 +11,9 @@
   <div class="form-group">
     <label for="inputUsername">Username</label>
     <input type="text" class="form-control" id="username" placeholder="Username" name="username" required pattern="[a-zA-Z0-9_\-\.]{1,20}" title="Only alphanumerics . - and _ allowed (no spaces allowed)" />
+    <div id="user_unavailable" style="color: red; display: none; margin-left: 1%; margin-top: 2%" >Username sudah digunakan</div>
+    <div id="user_available" style="color: #4ED001; display: none; margin-left: 1%; margin-top: 2%" >Username dapat digunakan</div>
+    <div class="loader"></div>
   </div>
   <div class="form-group">
     <label for="inputPassword">Password</label>
@@ -31,6 +34,29 @@
   <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>" />
   <input type="submit" class="btn btn-primary" value="Daftar" />
 </form>
+
+<script>
+    $('#username').change(function () {
+        $('.loader').show();
+        $('#user_unavailable').hide();
+        $('#user_available').hide();
+        var username = $('#username').val();
+        $.get("{{route('check_user')}}?username="+username, function(data) {
+            $('.loader').hide();
+            if(data == 'available')
+            {
+                $('#user_available').show();
+                $('#user_unavailable').hide();
+
+            }
+            else
+            {
+                $('#user_unavailable').show();
+                $('#user_available').hide();
+            }
+        });
+    });
+</script>
 
 <script>
     $('#menu_startup').removeClass();

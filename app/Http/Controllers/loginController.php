@@ -177,4 +177,18 @@ class loginController extends Controller
     {
         //
     }
+
+    public function checkUser(Request $request)
+    {
+        $username = $request->username;
+        $pengguna = Pengguna::where('username',$username)->first();
+        if(is_null($pengguna))
+        {
+            echo 'available';
+        }
+        else
+        {
+            echo 'unavailable';
+        }
+    }
 }

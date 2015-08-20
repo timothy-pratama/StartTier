@@ -37,3 +37,6 @@ Route::post('/startup/{nama_startup}/edit_detil_startup',['uses'=>'startupContro
 
 /* routing email */
 Route::get('/email/{username}', ['uses'=>'emailController@index','as'=>'email']);
+
+/* Service Endpoint */
+Route::get('/API/user/available',['uses'=>'loginController@checkUser','as'=>'check_user']);

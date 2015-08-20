@@ -19,9 +19,9 @@ class startupController extends Controller
         return view('startup.edit_startup', compact('nama_startup'));
     }
 
-    public function editProfilStartup($nama_startup)
+    public function editProfilStartup($nama_startup, Request $request)
     {
-
+        return dd($request);
     }
 
     public function editDetilStartup($nama_startup)
