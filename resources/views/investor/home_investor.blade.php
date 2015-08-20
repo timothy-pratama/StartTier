@@ -21,7 +21,13 @@
                     @if(session('current_user')->deskripsi_perusahaan === "")
                     <p>Belum ada deskripsi</p>
                     @else
-                    <p>{{session('current_user')->deskripsi_perusahaan}}</p>
+                    <p>
+                        <?php
+                            $deskripsi = session('current_user')->deskripsi_perusahaan;
+                            $formated_deskripsi = nl2br($deskripsi);
+                            echo $formated_deskripsi;
+                        ?>
+                    </p>
                     @endif
                 </div>
             </div>
@@ -46,7 +52,13 @@
                                 </tr>
                                 <tr>
                                     <th>Alamat</th>
-                                    <td>{{session('current_user')->alamat_perusahaan}}</td>
+                                    <td>
+                                        <?php
+                                            $alamat = session('current_user')->alamat_perusahaan;
+                                            $formated_alamat = nl2br($alamat);
+                                            echo $formated_alamat;
+                                        ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
