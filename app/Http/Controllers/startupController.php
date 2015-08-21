@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Pengguna;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class startupController extends Controller
@@ -77,5 +79,22 @@ class startupController extends Controller
     public function editproject($nama_startup, $nama_project)
     {
         return view('startup.edit_startup_project', compact('nama_startup', 'nama_project'));
+    }
+
+    public function editPassword($nama_startup, Request $request)
+    {
+        return view('startup.change_password',compact('nama_startup'));
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $pengguna = Pengguna::where('username','=',session('current_user')->username)->first();
+        if(Hash::check($request->old_password,$pengguna->password)) {
+            $pengguna->password = Hash::make($request->new_password);
+            $pengguna->save();
+            return redirect()->route('home_startup',['nama_startup'=>$pengguna->nama_perusahaan])->with('sukses_ganti_password','Password berhasil diganti');
+        } else {
+            return redirect()->route('startup_edit_password', ['nama_startup'=>$pengguna->nama_perusahaan])->with('error_message', 'Password salah');
+        }
     }
 }

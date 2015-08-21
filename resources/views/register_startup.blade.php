@@ -11,7 +11,7 @@
   <div class="form-group">
     <label for="inputUsername">Username</label>
     <input type="text" class="form-control" id="username" placeholder="Username" name="username" required pattern="[a-zA-Z0-9_\-\.]{1,20}" title="Only alphanumerics . - and _ allowed (no spaces allowed)" />
-    <div id="user_unavailable" style="color: red; display: none; margin-left: 1%; margin-top: 2%" >Username sudah digunakan</div>
+    <div id="user_unavailable" style="color: red; display: none; margin-left: 1%; margin-top: 2%" >Username tidak dapat digunakan</div>
     <div id="user_available" style="color: #4ED001; display: none; margin-left: 1%; margin-top: 2%" >Username dapat digunakan</div>
     <div class="loader"></div>
   </div>
@@ -37,22 +37,22 @@
 
 <script>
     $('#username').change(function () {
-        $('.loader').show();
-        $('#user_unavailable').hide();
-        $('#user_available').hide();
+        $('.loader').show(100);
+        $('#user_unavailable').hide(100);
+        $('#user_available').hide(100);
         var username = $('#username').val();
         $.get("{{route('check_user')}}?username="+username, function(data) {
-            $('.loader').hide();
-            if(data == 'available')
+            $('.loader').hide(100);
+            if(data == 'available' && username.length>0 && username.index(' ') == -1)
             {
-                $('#user_available').show();
-                $('#user_unavailable').hide();
+                $('#user_available').show(100);
+                $('#user_unavailable').hide(100);
 
             }
             else
             {
-                $('#user_unavailable').show();
-                $('#user_available').hide();
+                $('#user_unavailable').show(100);
+                $('#user_available').hide(100);
             }
         });
     });

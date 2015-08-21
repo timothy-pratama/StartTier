@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Pengguna;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class investorController extends Controller
@@ -70,5 +72,22 @@ class investorController extends Controller
         Session::put('current_user',$pengguna);
 
         return redirect()->route('home_investor',['nama_investor'=>$pengguna->nama_perusahaan]);
+    }
+
+    public function changePassword(Request $request, $nama_investor)
+    {
+        return view('investor.change_password',compact('nama_investor'));
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $pengguna = Pengguna::where('username','=',session('current_user')->username)->first();
+        if(Hash::check($request->old_password,$pengguna->password)) {
+            $pengguna->password = Hash::make($request->new_password);
+            $pengguna->save();
+            return redirect()->route('home_investor',['nama_investor'=>$pengguna->nama_perusahaan])->with('sukses_ganti_password','Password berhasil diganti');
+        } else {
+            return redirect()->route('investor_ganti_password', ['nama_investor'=>$pengguna->nama_perusahaan])->with('error_message', 'Password salah');
+        }
     }
 }

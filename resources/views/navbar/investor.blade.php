@@ -12,7 +12,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li id="menu_beranda" class="active"><a href="{{route('home_investor',array('nama_perusahaan'=>'Microsoft Corporation'))}}">Beranda</a></li>
+        <li id="menu_beranda" class="active"><a href="{{route('home_investor',array('nama_perusahaan'=>session('current_user')->nama_perusahaan))}}">Beranda</a></li>
         <li id="menu_startup"><a href="{{route('list_startup')}}">Startup</a></li>
         <li id="menu_investor"><a href="{{route('list_investor')}}">Investor</a></li>
       </ul>
@@ -34,6 +34,8 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session('current_user')->username}}<span class="caret"></span></a>
         <ul class="dropdown-menu">
+          <li><a href="{{route('investor_ganti_password',['nama_investor'=>session('current_user')->nama_perusahaan])}}">Ganti Password</a></li>
+          <li role="separator" class="divider"></li>
           <li><a href="{{route('user_logout')}}">Logout</a></li>
         </ul>
       </li>

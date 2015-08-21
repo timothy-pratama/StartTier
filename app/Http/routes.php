@@ -22,18 +22,22 @@ Route::get('/user/logout',['uses'=>'loginController@logout','as'=>'user_logout']
 /* routing investor */
 Route::get('/investor/{nama_investor}', ['uses'=>'investorController@index','as'=>'home_investor']);
 Route::get('/investor/{nama_investor}/edit', ['uses'=>'investorController@edit','as'=>'edit_investor']);
+Route::get('investor/{nama_investor}/akun/ganti_password',['uses'=>'investorController@changePassword','as'=>'investor_ganti_password']);
 
 Route::post('investor/{nama_investor}/edit_profil_investor',['uses'=>'investorController@editProfilInvestor','as'=>'edit_profil_investor']);
 Route::post('investor/{nama_investor}/edit_detil_investor',['uses'=>'investorController@editDetilInvestor','as'=>'edit_detil_investor']);
+Route::post('investor/update_password',['uses'=>'investorController@updatePassword','as'=>'investor_update_password']);
 
 /* routing startup */
 Route::get('/startup/{nama_startup}', ['uses'=>'startupController@index','as'=>'home_startup']);
 Route::get('/startup/{nama_startup}/edit', ['uses'=>'startupController@edit','as'=>'edit_startup']);
 Route::get('/startup/{nama_startup}/{nama_project}/edit', ['uses'=>'startupController@editproject','as'=>'edit_startup_project']);
 Route::get('/startup/{nama_startup}/token', ['uses'=>'tokenController@index','as'=>'token']);
+Route::get('/startup/{nama_startup}/akun/ganti_password',['uses'=>'startupController@editPassword','as'=>'startup_edit_password']);
 
 Route::post('/startup/{nama_startup}/edit_profil_startup',['uses'=>'startupController@editProfilStartup','as'=>'edit_profil_startup']);
 Route::post('/startup/{nama_startup}/edit_detil_startup',['uses'=>'startupController@editDetilStartup','as'=>'edit_detil_startup']);
+Route::post('/startup/update_password',['uses'=>'startupController@updatePassword','as'=>'startup_update_password']);
 
 /* routing email */
 Route::get('/email/{username}', ['uses'=>'emailController@index','as'=>'email']);

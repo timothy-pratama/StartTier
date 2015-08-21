@@ -29,8 +29,8 @@
 					<label for="logo_perusahaan">Logo Perusahaan</label>
 					<input type="file" id="logo_perusahaan" name="logo_perusahaan">
 				</div>
-				<input type="submit" class="btn btn-default" value="Simpan"></button>
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<input type="submit" class="btn btn-default" value="Simpan"></button>
 			</form>
 
 		</div>

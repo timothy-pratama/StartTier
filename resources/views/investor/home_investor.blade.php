@@ -181,4 +181,14 @@
                 </div>
     </div>
 </div>
+
+@include('modal.basic_modal')
+@if(session('sukses_ganti_password'))
+<script>
+    $('#basic_modal_title').text('Ganti Password Berhasil');
+    $('#basic_modal_body').find('p').text('Password Anda berhasil diubah');
+    $('#basic_modal').modal('show');
+</script>
+@endif
+
 @stop
