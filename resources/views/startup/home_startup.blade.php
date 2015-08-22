@@ -75,7 +75,7 @@
                                 </tr>
                                 <tr>
                                     <th>Projects</th>
-                                    <td>10</td>
+                                    <td>{{session('current_user')->jumlah_project}}</td>
                                 </tr>
                             </table>
                         </li>

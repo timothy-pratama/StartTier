@@ -34,6 +34,10 @@ class TablesSeeder extends Seeder
         {
             $user_startup->projects()->save(factory(\App\Project::class)->make());
         }
+        $user_startup->jumlah_project = $i;
+        $user_startup->rating = $user_startup->komentars()->avg('rating_score');
+        $user_startup->jumlah_pemberi_rating = $user_startup->komentars()->count();
+        $user_startup->save();
 
         // generate startup users
         $users = factory(\App\Pengguna::class, 'startup', $startup_accounts - 1)->make();
@@ -48,6 +52,10 @@ class TablesSeeder extends Seeder
             {
                 $user->projects()->save(factory(\App\Project::class)->make());
             }
+            $user->jumlah_project = $i;
+            $user->rating = $user->komentars()->avg('rating_score');
+            $user->jumlah_pemberi_rating = $user->komentars()->count();
+            $user->save();
         }
 
         // generate default investor user
@@ -59,6 +67,9 @@ class TablesSeeder extends Seeder
         {
             $user_investor->komentars()->save(factory(\App\Komentar::class)->make());
         }
+        $user_investor->rating = $user_investor->komentars()->avg('rating_score');
+        $user_investor->jumlah_pemberi_rating = $user_investor->komentars()->count();
+        $user_investor->save();
 
         // generate investor users
         $users = factory(\App\Pengguna::class, 'investor', $investor_accounts - 1)->make();
@@ -69,6 +80,9 @@ class TablesSeeder extends Seeder
             {
                 $user->komentars()->save(factory(\App\Komentar::class)->make());
             }
+            $user->rating = $user->komentars()->avg('rating_score');
+            $user->jumlah_pemberi_rating = $user->komentars()->count();
+            $user->save();
         }
     }
 }

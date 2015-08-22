@@ -28,8 +28,6 @@ $factory->define(\App\Pengguna::class, function (Faker\Generator $faker) {
         'alamat_perusahaan' => $faker->address,
         'deskripsi_perusahaan' => $faker->realText(mt_rand(1000,1500)),
         'email' => $faker->email,
-        'rating' => $faker->randomFloat(null,0,5),
-        'jumlah_pemberi_rating' => mt_rand(1,99999),
         'video' => $faker->url,
         'tipe' => 'investor',
         'token' => $faker->randomNumber(3),

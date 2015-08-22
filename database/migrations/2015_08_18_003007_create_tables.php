@@ -32,6 +32,7 @@ class CreateTables extends Migration
             $table->string('full_logo_perusahaan')->default('');
             $table->date('pushed_at')->default(\Carbon\Carbon::now());
             $table->integer('saldo')->default(0);
+            $table->integer('jumlah_project')->default(0);
         });
 
         Schema::create('komentar', function(Blueprint $table) {
