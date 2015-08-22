@@ -48,15 +48,7 @@ class loginController extends Controller
         $pengguna->nama_perusahaan = $request->namaPerusahaan;
         $pengguna->alamat_perusahaan = $request->alamatPerusahaan;
         $pengguna->email = $request->email;
-        $pengguna->rating = 0;
-        $pengguna->jumlah_pemberi_rating = 0;
         $pengguna->tipe = "investor";
-        $pengguna->deskripsi_perusahaan = "";
-        $pengguna->video = "";
-        $pengguna->token = 0;
-        $pengguna->logo_perusahaan = "";
-        $pengguna->full_logo_perusahaan = "";
-        $pengguna->pushed_at = new \DateTime('now');
         $pengguna->save();
         return redirect()->route('login')->with('username',$request->username);
     }
@@ -69,15 +61,7 @@ class loginController extends Controller
         $pengguna->nama_perusahaan = $request->namaStartup;
         $pengguna->alamat_perusahaan = $request->alamatStartup;
         $pengguna->email = $request->email;
-        $pengguna->rating = 0;
-        $pengguna->jumlah_pemberi_rating = 0;
         $pengguna->tipe = "startup";
-        $pengguna->deskripsi_perusahaan = "";
-        $pengguna->video = "";
-        $pengguna->token = 0;
-        $pengguna->logo_perusahaan = "";
-        $pengguna->full_logo_perusahaan = "";
-        $pengguna->pushed_at = new \DateTime('now');
         $pengguna->save();
         return redirect()->route('login')->with('username',$request->username);
     }

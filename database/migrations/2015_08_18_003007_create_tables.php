@@ -19,18 +19,19 @@ class CreateTables extends Migration
             $table->string('password');
             $table->string('nama_perusahaan');
             $table->string('alamat_perusahaan');
-            $table->text('deskripsi_perusahaan');
+            $table->text('deskripsi_perusahaan')->default('');
             $table->string('email',50);
-            $table->float('rating');
-            $table->integer('jumlah_pemberi_rating');
-            $table->string('video',255);
+            $table->float('rating')->default(0);
+            $table->integer('jumlah_pemberi_rating')->default(0);
+            $table->string('video')->default('');
             $table->string('tipe'); //type == startup || investor
-            $table->integer('token');
+            $table->integer('token')->default(0);
             $table->date('created_at');
             $table->date('updated_at');
-            $table->string('logo_perusahaan');
-            $table->string('full_logo_perusahaan');
-            $table->date('pushed_at');
+            $table->string('logo_perusahaan')->default('');
+            $table->string('full_logo_perusahaan')->default('');
+            $table->date('pushed_at')->default(\Carbon\Carbon::now());
+            $table->integer('saldo')->default(0);
         });
 
         Schema::create('komentar', function(Blueprint $table) {

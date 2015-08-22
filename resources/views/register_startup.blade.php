@@ -43,7 +43,7 @@
         var username = $('#username').val();
         $.get("{{route('check_user')}}?username="+username, function(data) {
             $('.loader').hide(100);
-            if(data == 'available' && username.length>0 && username.index(' ') == -1)
+            if(data == 'available' && username.length>0 && username.indexOf(' ') == -1)
             {
                 $('#user_available').show(100);
                 $('#user_unavailable').hide(100);
