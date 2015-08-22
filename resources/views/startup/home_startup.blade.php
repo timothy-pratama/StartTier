@@ -204,6 +204,7 @@
 </div>
 
 @include('modal.basic_modal')
+
 @if(session('sukses_ganti_password'))
     <script>
         $('#basic_modal_title').text('Ganti Password Berhasil');
@@ -211,10 +212,19 @@
         $('#basic_modal').modal('show');
     </script>
 @endif
+
 @if(session('update_project_berhasil'))
 <script>
      $('#basic_modal_title').text('Project Berhasil Disimpan');
      $('#basic_modal_body').find('p').text('Project {{session('update_project_berhasil')}} berhasil diganti');
+     $('#basic_modal').modal('show');
+</script>
+@endif
+
+@if(session('nama_project_ditambah'))
+<script>
+     $('#basic_modal_title').text('Project Berhasil Dibuat');
+     $('#basic_modal_body').find('p').text('Project {{session('nama_project_ditambah')}} berhasil dibuat');
      $('#basic_modal').modal('show');
 </script>
 @endif

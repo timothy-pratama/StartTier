@@ -124,4 +124,29 @@ class startupController extends Controller
         $project->save();
         return redirect()->route('home_startup',['nama_startup'=>session('current_user')->nama_perusahaan])->with('update_project_berhasil',$project_title);
     }
+
+    public function tambahProject(Request $request, $nama_startup)
+    {
+        return view('startup.add_startup_project');
+    }
+
+    public function newProject(Request $request)
+    {
+        $project_title = $request->project_title;
+        $project_description = $request->project_description;
+        $project_image = $request->file('gambar_project');
+
+        $project = new Project();
+        $project->project_title = $project_title;
+        $project->project_description = $project_description;
+        $project->id_project_owner = session('current_user')->id_user;
+
+        $destination = public_path('user_uploaded_files/'.session('current_user')->username.'/project_'.(Project::max('id_project')+1).'/');
+        $filename = 'foto_project.'.$project_image->getClientOriginalExtension();
+        $project_image->move($destination, $filename);
+        $project->project_image_url = url('user_uploaded_files/'.session('current_user')->username.'/project_'.(Project::max('id_project')+1).'/'.$filename);
+
+        $project->save();
+        return redirect()->route('home_startup')->with('nama_project_ditambah',$project->project_title);
+    }
 }

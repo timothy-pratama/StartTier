@@ -34,12 +34,13 @@ Route::get('/startup/{nama_startup}/edit', ['uses'=>'startupController@edit','as
 Route::get('/startup/{nama_startup}/{nama_project}/edit', ['uses'=>'startupController@editproject','as'=>'edit_startup_project']);
 Route::get('/startup/{nama_startup}/token', ['uses'=>'tokenController@index','as'=>'token']);
 Route::get('/startup/{nama_startup}/akun/ganti_password',['uses'=>'startupController@editPassword','as'=>'startup_edit_password']);
-
+Route::get('/startup/{nama_startup}/project/buat_project',['uses'=>'startupController@tambahProject','as'=>'startup_add_project']);
 
 Route::post('/startup/{nama_startup}/edit_profil_startup',['uses'=>'startupController@editProfilStartup','as'=>'edit_profil_startup']);
 Route::post('/startup/{nama_startup}/edit_detil_startup',['uses'=>'startupController@editDetilStartup','as'=>'edit_detil_startup']);
 Route::post('/startup/update_password',['uses'=>'startupController@updatePassword','as'=>'startup_update_password']);
 Route::post('startup/update_project', ['uses'=>'startupController@updateProject', 'as'=>'startup_update_project']);
+Route::post('startup/tambah_project', ['uses'=>'startupController@newProject', 'as'=>'startup_new_project']);
 
 /* routing email */
 Route::get('/email/{username}', ['uses'=>'emailController@index','as'=>'email']);
