@@ -3,6 +3,15 @@
 @include('navbar.startup')
 @stop
 @section('content')
+
+<?php
+    function convert_to_rupiah($angka)
+    {
+        return 'Rp. '.strrev(implode('.',str_split(strrev(strval($angka)),3)));
+    }
+    $saldo = convert_to_rupiah(session('current_user')->saldo);
+?>
+
 <h1>Token {{$nama_startup}}</h1>
 
 <div class="container-fluid">
@@ -12,10 +21,19 @@
         <div class="col-md-4 token">
             <table class="data-token">
                 <tr>
-                    <th style="width: 35%; vertical-align: middle">Jumlah Token Up:</th>
+                    <th style="width: 35%; vertical-align: middle">Jumlah Saldo</th>
+                    <td>:</td>
+                    <td style="width: 43%; vertical-align: middle">{{$saldo}}</td>
+                    <td style="text-align: center">
+                        <button class="btn btn-primary" disabled>Tambah</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="width: 35%; vertical-align: middle">Jumlah Token Up</th>
+                    <td>:</td>
                     <td style="width: 43%; vertical-align: middle">{{session('current_user')->token}}</td>
-                    <td style="widows: 22%;">
-                        <button class="btn btn-primary">Gunakan</button>
+                    <td style="text-align: center;">
+                        <button class="btn btn-primary" disabled>Gunakan</button>
                     </td>
                 </tr>
             </table>
@@ -37,23 +55,23 @@
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>Rp 100</td>
+                        <td>{{convert_to_rupiah(100)}}</td>
                         <td>
-                            <button class="btn btn-success">Beli</button>
+                            <button class="btn btn-success" disabled>Beli</button>
                         </td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>Rp 500</td>
+                        <td>{{convert_to_rupiah(500)}}</td>
                         <td>
-                            <button class="btn btn-success">Beli</button>
+                            <button class="btn btn-success" disabled>Beli</button>
                         </td>
                     </tr>
                     <tr>
                         <td>10</td>
-                        <td>Rp 1000</td>
+                        <td>{{convert_to_rupiah(1000)}}</td>
                         <td>
-                            <button class="btn btn-success">Beli</button>
+                            <button class="btn btn-success" disabled>Beli</button>
                         </td>
                     </tr>
                 </table>
