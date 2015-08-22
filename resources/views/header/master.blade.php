@@ -25,7 +25,7 @@
 </div>
 </div>
 <div id="footer">
-	<p>© 2016 TofuCurry. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+	<p>© 2015 TofuCurry. All rights reserved. Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
 </div>
 <!-- end #footer -->
 
