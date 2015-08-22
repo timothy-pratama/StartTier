@@ -74,7 +74,7 @@
                         <div class="statVal">
                             <span class="ui-rater">
                                 <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:{{session('current_user')->rating/5*90}}px"></span></span>
-                                <span class="ui-rater-rating">{{session('current_user')->rating}}</span>&#160;(<span class="ui-rater-rateCount">{{session('current_user')->jumlah_pemberi_rating}}</span>)
+                                <span class="ui-rater-rating">{{number_format((float)session('current_user')->rating, 2, '.', '')}}</span>&#160;(<span class="ui-rater-rateCount">{{session('current_user')->jumlah_pemberi_rating}}</span>)
                             </span>
                         </div>
                     </div>

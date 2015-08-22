@@ -27,7 +27,7 @@
 				</div>
 				<div class="form-group">
 					<label for="logo_perusahaan">Logo Perusahaan</label>
-					<input type="file" id="logo_perusahaan" name="logo_perusahaan">
+					<input type="file" id="logo_perusahaan" name="logo_perusahaan" accept="image/*">
 				</div>
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<input type="submit" class="btn btn-default" value="Simpan"></button>
@@ -44,7 +44,7 @@
 				</div>
 				<div class="form-group">
 					<label for="full_logo_perusahaan">Logo Penuh Perusahaan</label>
-					<input type="file" id="full_logo_perusahaan" name="full_logo_perusahaan">
+					<input type="file" id="full_logo_perusahaan" name="full_logo_perusahaan" accept="image/*">
 				</div>
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<input type="submit" class="btn btn-default" value="Simpan"></button>

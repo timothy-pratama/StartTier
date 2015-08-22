@@ -63,8 +63,7 @@ $factory->define(\App\Komentar::class, function(Faker\Generator $faker) {
 
 $factory->define(\App\Project::class, function(Faker\Generator $faker) {
    return [
-        'project_title'=>$faker->sentence(mt_rand(3,6)),
-        'project_post_date'=>$faker->dateTimeThisYear,
+        'project_title'=>$faker->realText(mt_rand(20,40)),
         'project_description'=>$faker->realText(mt_rand(1000,1500)),
         'project_image_url'=>$faker->imageUrl(),
         'created_at'=>$faker->dateTimeThisYear,

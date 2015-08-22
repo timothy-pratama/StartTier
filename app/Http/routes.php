@@ -38,6 +38,7 @@ Route::get('/startup/{nama_startup}/akun/ganti_password',['uses'=>'startupContro
 Route::post('/startup/{nama_startup}/edit_profil_startup',['uses'=>'startupController@editProfilStartup','as'=>'edit_profil_startup']);
 Route::post('/startup/{nama_startup}/edit_detil_startup',['uses'=>'startupController@editDetilStartup','as'=>'edit_detil_startup']);
 Route::post('/startup/update_password',['uses'=>'startupController@updatePassword','as'=>'startup_update_password']);
+Route::post('startup/update_project', ['uses'=>'startupController@updateProject', 'as'=>'startup_update_project']);
 
 /* routing email */
 Route::get('/email/{username}', ['uses'=>'emailController@index','as'=>'email']);

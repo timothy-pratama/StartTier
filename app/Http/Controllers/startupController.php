@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Pengguna;
+use App\Project;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 
 class startupController extends Controller
 {
@@ -76,9 +78,10 @@ class startupController extends Controller
         return redirect()->route('home_startup',['nama_startup'=>$pengguna->nama_perusahaan]);
     }
 
-    public function editproject($nama_startup, $nama_project)
+    public function editproject(Request $request, $nama_startup, $nama_project)
     {
-        return view('startup.edit_startup_project', compact('nama_startup', 'nama_project'));
+        $id_project = $request->id_project;
+        return view('startup.edit_startup_project', compact('nama_startup', 'nama_project','id_project'));
     }
 
     public function editPassword($nama_startup, Request $request)
@@ -96,5 +99,29 @@ class startupController extends Controller
         } else {
             return redirect()->route('startup_edit_password', ['nama_startup'=>$pengguna->nama_perusahaan])->with('error_message', 'Password salah');
         }
+    }
+
+    public function updateProject(Request $request)
+    {
+        $project_description = $request->project_description;
+        $project_id = $request->id_project;
+        $project_title = $request->project_title;
+
+        $project = Project::find($project_id);
+
+        $project->project_title = $project_title;
+        $project->project_description = $project_description;
+
+        if($request->hasFile('gambar_project'))
+        {
+            $gambar_project_file = $request->file('gambar_project');
+            $destination = public_path('user_uploaded_files/'.session('current_user')->username.'/project_'.$project->id_project.'/');
+            $filename = $gambar_project_file->getClientOriginalName();
+            $gambar_project_file->move($destination, $filename);
+            $project->project_image_url = url('user_uploaded_files/'.session('current_user')->username.'/project_'.$project->id_project.'/'.$filename);
+        }
+
+        $project->save();
+        return redirect()->route('home_startup',['nama_startup'=>session('current_user')->nama_perusahaan])->with('update_project_berhasil',$project_title);
     }
 }
