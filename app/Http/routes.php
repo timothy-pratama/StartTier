@@ -35,6 +35,7 @@ Route::get('/startup/{nama_startup}/{nama_project}/edit', ['uses'=>'startupContr
 Route::get('/startup/{nama_startup}/token', ['uses'=>'tokenController@index','as'=>'token']);
 Route::get('/startup/{nama_startup}/akun/ganti_password',['uses'=>'startupController@editPassword','as'=>'startup_edit_password']);
 
+
 Route::post('/startup/{nama_startup}/edit_profil_startup',['uses'=>'startupController@editProfilStartup','as'=>'edit_profil_startup']);
 Route::post('/startup/{nama_startup}/edit_detil_startup',['uses'=>'startupController@editDetilStartup','as'=>'edit_detil_startup']);
 Route::post('/startup/update_password',['uses'=>'startupController@updatePassword','as'=>'startup_update_password']);

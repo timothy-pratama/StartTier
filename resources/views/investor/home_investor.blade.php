@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<h1>{{$nama_investor}} [<a href="{{route('edit_investor',array('nama_investor'=>$nama_investor))}}">Edit</a>]</h1>
+<h1>{{$nama_investor}} [<a href="{{route('edit_investor',array('nama_investor'=>$nama_investor))}}" style="color: #337ab7">Edit</a>]</h1>
 
 <div id="page-bgtop">
     <div id="page-bgbtm">
@@ -90,7 +90,7 @@
                 <div class="review">
 
                     <?php
-                        $komentars = session('current_user')->komentars()->get();
+                        $komentars = session('current_user')->komentars()->orderBy('created_at','desc')->get();
                         $i = 0;
                         $j = 0;
                     ?>

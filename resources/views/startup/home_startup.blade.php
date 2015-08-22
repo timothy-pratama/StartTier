@@ -7,7 +7,7 @@
 @section('content')
 @include('utilities.utilities')
 
-<h1>{{$nama_startup}} [<a href="{{route('edit_startup',array('nama_startup'=>$nama_startup))}}">Edit</a>]</h1>
+<h1>{{$nama_startup}} [<a href="{{route('edit_startup',array('nama_startup'=>$nama_startup))}}" style="color: #337ab7">Edit</a>]</h1>
 
 <div id="page-bgtop">
     <div id="page-bgbtm">
@@ -104,7 +104,7 @@
 
         <div class="projects container-fluid">
 
-            <?php $projects = session('current_user')->projects()->get(); $i = 0; $j = 0;?>
+            <?php $projects = session('current_user')->projects()->orderBy('created_at','desc')->get(); $i = 0; $j = 0;?>
             @foreach($projects as $project)
 
                 @if($i == 0)
@@ -113,7 +113,7 @@
 
                     <div class="col-md-6">
                         <div class="post-profile projects">
-                            <h2 class="title"><a href="#">{{$project->project_title}}</a> [<a href="{{route('edit_startup_project',array('nama_startup'=>session('current_user')->nama_perusahaan, 'nama_project'=>$project->project_title, 'id_project'=>$project->id_project))}}">Edit</a>]</h2>
+                            <h2 class="title"><a href="#">{{$project->project_title}}</a> [<a href="{{route('edit_startup_project',array('nama_startup'=>session('current_user')->nama_perusahaan, 'nama_project'=>$project->project_title, 'id_project'=>$project->id_project))}}" style="color: #337ab7">Edit</a>]</h2>
                             <div class="meta-information">
                                 <p class="meta">Posted on {{DateToIndo($project->created_at)}}
                                     &nbsp;&bull;&nbsp;<a href="#" class="permalink">Full Project</a></p>
@@ -149,7 +149,7 @@
             <div class="review">
 
             <?php
-                $komentars = session('current_user')->komentars()->get();
+                $komentars = session('current_user')->komentars()->orderBy('created_at','desc')->get();
                 $i = 0;
                 $j = 0;
             ?>
