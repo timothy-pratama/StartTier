@@ -116,7 +116,7 @@ class startupController extends Controller
         {
             $gambar_project_file = $request->file('gambar_project');
             $destination = public_path('user_uploaded_files/'.session('current_user')->username.'/project_'.$project->id_project.'/');
-            $filename = $gambar_project_file->getClientOriginalName();
+            $filename = 'foto_project.'.$gambar_project_file->getClientOriginalExtension();
             $gambar_project_file->move($destination, $filename);
             $project->project_image_url = url('user_uploaded_files/'.session('current_user')->username.'/project_'.$project->id_project.'/'.$filename);
         }
