@@ -35,6 +35,8 @@ Route::get('/startup/{nama_startup}/{nama_project}/edit', ['uses'=>'startupContr
 Route::get('/startup/{nama_startup}/token', ['uses'=>'tokenController@index','as'=>'token']);
 Route::get('/startup/{nama_startup}/akun/ganti_password',['uses'=>'startupController@editPassword','as'=>'startup_edit_password']);
 Route::get('/startup/{nama_startup}/project/buat_project',['uses'=>'startupController@tambahProject','as'=>'startup_add_project']);
+Route::get('/startup/{nama_startup}/project/hapus_project',['uses'=>'startupController@hapusProject','as'=>'startup_hapus_project']);
+Route::get('/project/delete_project',['uses'=>'startupController@deleteProject','as'=>'startup_delete_project']);
 
 Route::post('/startup/{nama_startup}/edit_profil_startup',['uses'=>'startupController@editProfilStartup','as'=>'edit_profil_startup']);
 Route::post('/startup/{nama_startup}/edit_detil_startup',['uses'=>'startupController@editDetilStartup','as'=>'edit_detil_startup']);

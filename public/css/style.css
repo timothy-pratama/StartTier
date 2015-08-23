@@ -1051,3 +1051,9 @@ li #rating {
         transform: rotate(360deg);
     }
 }
+
+.delete_project {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding-top: 2%;
+}

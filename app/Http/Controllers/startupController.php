@@ -147,6 +147,26 @@ class startupController extends Controller
         $project->project_image_url = url('user_uploaded_files/'.session('current_user')->username.'/project_'.(Project::max('id_project')+1).'/'.$filename);
 
         $project->save();
-        return redirect()->route('home_startup')->with('nama_project_ditambah',$project->project_title);
+
+        $pengguna = session('current_user');
+        $pengguna->jumlah_project = $pengguna->jumlah_project + 1;
+        $pengguna->save();
+        Session::put('current_user',$pengguna);
+        return redirect()->route('home_startup',['nama_startup'=>session('current_user')->nama_perusahaan])->with('nama_project_ditambah',$project->project_title);
+    }
+
+    public function hapusProject()
+    {
+        return view('startup.hapus_project');
+    }
+
+    public function deleteProject(Request $request)
+    {
+        Project::destroy($request->id);
+        $pengguna = Pengguna::find(session('current_user')->id_user);
+        $pengguna->jumlah_project = $pengguna->jumlah_project - 1;
+        $pengguna->save();
+        Session::put('current_user', $pengguna);
+        return redirect()->route('startup_hapus_project',['nama_startup'=>session('current_user')->nama_perusahaan]);
     }
 }
