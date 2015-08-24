@@ -10,7 +10,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-danger" onclick="hapus();">Hapus</button>
+        <button type="button" id="btn-hapus" class="btn btn-danger">Hapus</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

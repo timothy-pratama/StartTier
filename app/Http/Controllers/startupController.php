@@ -162,11 +162,19 @@ class startupController extends Controller
 
     public function deleteProject(Request $request)
     {
-        Project::destroy($request->id);
-        $pengguna = Pengguna::find(session('current_user')->id_user);
-        $pengguna->jumlah_project = $pengguna->jumlah_project - 1;
-        $pengguna->save();
-        Session::put('current_user', $pengguna);
-        return redirect()->route('startup_hapus_project',['nama_startup'=>session('current_user')->nama_perusahaan]);
+        $token = $request->token;
+        if(Hash::check(session('current_user')->username.session('current_user')->password, $token))
+        {
+            Project::destroy($request->id);
+            $pengguna = Pengguna::find(session('current_user')->id_user);
+            $pengguna->jumlah_project = $pengguna->jumlah_project - 1;
+            $pengguna->save();
+            Session::put('current_user', $pengguna);
+            return ('ok');
+        }
+        else
+        {
+            return('Anda harus login untuk mengakses halaman ini.');
+        }
     }
 }
