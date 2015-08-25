@@ -20,7 +20,8 @@
 @section('content')
 <div class="jumbotron">
   <h1>StartTier</h1>
-  <p>StartTier adalah sebuah situs yang menyediakan layanan untuk menghubungkan startup dan calon investor. Tujuannya adalah untuk membantu startup-startup yang baru berkembang dalam mengembangkan bisnisnya dengan bantuan dari investor. Dengan adanya startup-startup ini diharapkan akan membantu meningkatkan perekonomian Indonesia pada masa yang akan datang.</p>
+  <img src="{{asset('/img/logo_starttier.jpg')}}" style="display: block; margin-left: auto; margin-right: auto"/>
+  <p>StartTier adalah sebuah situs yang menyediakan layanan untuk menghubungkan startup dan calon investor. Tujuannya adalah untuk membantu startup-startup yang baru berkembang dalam mengembangkan bisnisnya dengan bantuan dari investor. Dengan adanya startup-startup ini diharapkan pertumbuhan ekonomi di Indonesia dapat meningkat dan banyak lapangan pekerjaan baru yang terbuka bagi masyarakat Indonesia.</p>
 </div>
 
 @include('modal.basic_modal')
