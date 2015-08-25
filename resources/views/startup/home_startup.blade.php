@@ -149,7 +149,7 @@
             <div class="review">
 
             <?php
-                $komentars = session('current_user')->komentars()->orderBy('created_at','desc')->get();
+                $komentars = session('current_user')->komentars()->orderBy('updated_at','desc')->get();
                 $i = 0;
                 $j = 0;
             ?>
@@ -164,6 +164,7 @@
                     <div class="review-wrapper">
                         <div class="review-header">
                             <h5 class="username">{{$komentar->nama_komentator}}</h5>
+                            <h5>{{DateToIndo($komentar->updated_at)}}</h5>
                             <div id="rating" class="stat">
                                 <div class="statVal">
                                     <span class="ui-rater">

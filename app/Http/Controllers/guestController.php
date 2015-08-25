@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Komentar;
+use App\Pengguna;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
 
 class guestController extends Controller
 {
@@ -33,77 +36,36 @@ class guestController extends Controller
         return view('list_investor', compact('cookie'));
     }
 
-    public function profile_startup($nama_startup)
+    public function profile_startup(Request $request, $nama_startup)
     {
-        return view('profile_startup',compact('nama_startup'));
+        $cookie = $request->cookie('current_user');
+        $id_user = $request->id;
+        return view('profile_startup',compact('nama_startup','cookie','id_user'));
     }
 
-    public function profile_investor($nama_investor)
+    public function profile_investor(Request $request, $nama_investor)
     {
-        return view('profile_investor',compact('nama_investor'));
+        $cookie = $request->cookie('current_user');
+        $id_user = $request->id;
+        return view('profile_investor',compact('nama_investor','cookie','id_user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
+    public function addKomentar(Request $request)
     {
-        //
-    }
+        $user = Pengguna::find($request->id_user);
+        if(Hash::check($user->username,$request->transaction_token)) {
+            $komentar = new Komentar();
+            $komentar->id_user = $request->id_user;
+            $komentar->email_komentator = $request->email_komentator;
+            $komentar->nama_komentator = $request->nama_komentator;
+            $komentar->komentar = $request->review_komentator;
+            $komentar->rating_score = $request->rating_score;
+            $komentar->save();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+            $user->jumlah_pemberi_rating = $user->komentars()->count();
+            $user->rating = $user->komentars()->avg('rating_score');
+            $user->save();
+            return redirect($request->url_callback)->with('komentar_success_message','ok');
+        }
     }
 }

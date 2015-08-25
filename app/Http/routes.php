@@ -49,3 +49,4 @@ Route::get('/email/{username}', ['uses'=>'emailController@index','as'=>'email'])
 
 /* Service Endpoint */
 Route::get('/API/user/available',['uses'=>'loginController@checkUser','as'=>'check_user']);
+Route::post('/komentar/add',['uses'=>'guestController@addKomentar','as'=>'add_komentar']);

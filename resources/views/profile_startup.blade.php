@@ -15,8 +15,17 @@
 @else
     @include('navbar.guest')
 @endif
+@endsection
 
 @section('content')
+
+<?php
+    $user = \App\Pengguna::find($id_user);
+ ?>
+
+@include('utilities.utilities')
+@include('modal.basic_modal')
+
 <h1>{{$nama_startup}}</h1>
 
 <div id="page-bgtop">
@@ -26,16 +35,11 @@
             <div class="post-profile">
                 <h2>Deskripsi Startup</h2>
                 <div class="entry">
-                    <img src="{{asset('img/logo_4.png')}}" width="800" height="300" alt="" />
-                    <p>Sekilas, BukaLapak.com memiliki konsep yang hampir sama dengan situs-situs lain yang memfasilitasi transaksi jual beli online di Indonesia. Namun ternyata sistem transaksi di BukaLapak.com di desain sedemikian rupa untuk menjaga keamanan pihak penjual maupun pembeli. Pihak penjual mendapat kesempatan untuk memasarkan segala produk jadi (non jasa dan non franchise) yang dilengkapi dengan deskripsi dan foto produk.
-
-                       Peraturan yang diterapkan BukaLapak.com pun cukup ketat, misalnya larangan copy paste dari penjual lainnya serta larangan untuk mencantumkan alamat, nomor rekening dan kontak pribadi di BukaLapak.com. Dengan demikian seluruh proses transaksi dan pembayaran akan difasilitasi dan dijamin keamanannya oleh BukaLapak.com.
-
-                       Proses pembayaran dari pihak pembeli akan difasilitasi oleh BukaLapak.com sesuai dengan peraturan yang berlaku. Sistem ini mungkin lebih dikenal dengan istilah Marketplace C2C. Setelah pembayaran selesai dilakukan, BukaLapak.com akan memberikan konfirmasi pada pihak penjual untuk mengirimkan barang ke alamat pembeli. Setelah barang diterima oleh pembeli, BukaLapak.com akan melakukan pencairan dana untuk pihak penjual.
-
-                       Rangkaian proses transaksi tersebut mudah dilakukan dengan mengikuti petunjuak yang sudah disediakan BukaLapak.com. Selain itu, BukaLapak.com juga akan memberikan tindakan mediasi, banned akun atau pelaporan pada pihak berwajib terhadap penjual yang melakukan penipuan dalam proses transaksi.
-
-                       Saat ini BukaLapak.com telah berhasil memfasilitasi transaksi online harian senilai US$ 43,000 (sekitar lima ratus juta rupiah). Sebuah angka fantastis untuk sebuah startup original karya anak Indonesia. Semoga kesuksesan BukaLapak.com dapat menjadi acuan bagi putra-putri bangsa lainnya untuk membuat beragam karya inovatif yang bermanfaat bagi bangsa Indonesia.</p>
+                    <img src="{{$user->full_logo_perusahaan}}" width="800" height="300" alt="" />
+                    <p><?php
+                        $formated_deskripsi = nl2br($user->deskripsi_perusahaan);
+                        echo $formated_deskripsi
+                    ?></p>
                 </div>
             </div>
 
@@ -45,7 +49,7 @@
             <ul>
                 <li>
                     <h2>Profile Startup</h2>
-                    <img src="{{asset('img/bukalapak_small_logo.png')}}" />
+                    <img src="{{$user->logo_perusahaan}}" />
                     <ul>
                         <li>
                             <table class="table-profile">
@@ -55,25 +59,26 @@
                                 </tr>
                                 <tr>
                                     <th>Alamat</th>
-                                    <td>
-                                        Plaza City View Lt.2 <br>
-                                        Jl. Kemang Timur No.22 <br>
-                                        Pasar Minggu, <br>
-                                        Pejaten Barat <br>
-                                        Jakarta, Indonesia 12510
-                                    </td>
+                                    <td><?php
+                                        $formated_alamat = nl2br($user->alamat_perusahaan);
+                                        echo $formated_alamat;
+                                     ?></td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
-                                    <td>{{$nama_startup}}@hotmail.com</td>
+                                    <td>{{$user->email}}</td>
                                 </tr>
                                 <tr>
                                     <th>Video</th>
-                                    <td><a href="https://www.youtube.com/watch?v=f7Q4Vf-HwEU">Lihat Video</a></td>
+                                    @if($user->video != "")
+                                    <td><a href="{{$user->video}}">Lihat Video</a></td>
+                                    @else
+                                    <td><p>Belum ada video</p></td>
+                                    @endif
                                 </tr>
                                 <tr>
                                     <th>Projects</th>
-                                    <td>10</td>
+                                    <td>{{$user->jumlah_project}}</td>
                                 </tr>
                             </table>
                         </li>
@@ -84,8 +89,8 @@
                     <div id="rating" class="stat">
                         <div class="statVal">
                             <span class="ui-rater">
-                                <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
-                                <span class="ui-rater-rating">5.0</span>&#160;(<span class="ui-rater-rateCount">800</span>)
+                                <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:{{$user->rating/5*90}}px"></span></span>
+                                <span class="ui-rater-rating">{{number_format((float)$user->rating, 2, '.', '')}}</span>&#160;(<span class="ui-rater-rateCount">{{$user->jumlah_pemberi_rating}}</span>)
                             </span>
                         </div>
                     </div>
@@ -100,35 +105,41 @@
 
         <div class="projects container-fluid">
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="post-profile projects">
-                        <h2 class="title"><a href="#">Amusphere Virtual Reality</a></h2>
-                        <div class="meta-information">
-                            <p class="meta">Posted by <a href="#">Asada Shino</a> on May 26, 2015
-                                &nbsp;&bull;&nbsp;<a href="#" class="permalink">Full Project</a></p>
-                        </div>
-                            <div class="entry">
-                                <p><img src="{{asset('img/amusphere.png')}}" width="800" height="300" alt="" /></p>
-                                <p>AmuSphere (アミュスフィア, Amyusufia?) is a second generation FullDive console, co-developed by RECT Progress Inc., that is the successor to the NerveGear. Its successor, temporarily named as AmuSphere 2, is planned to be shown in the 2026 Tokyo Game Show and released to the market in 2027. The AmuSphere is a helmet that consists of two metal overlapping rings. The system has been modified to make it safer than its predecessor by changing the microwave transmitter to a low frequency one and the incorporation of various sensors that continually monitor blood pressure and brain waves. If the person's condition becomes abnormal, a safety logout is provoked. This, by default, includes an option that automatically logs out a person if the avatar begins to fall asleep. Unlike the NerveGear, the AmuSphere is not equipped with an internal battery. In addition to other safety measures, the AmuSphere does not block out signals from the body to the extent of its predecessor, the NerveGear, so some players may rent a specialized room which blocks all external interference, designed to make the experience inside the virtual world all the more realistic.</p>
-                        </div>
-                    </div>
-                </div>
+            <?php $projects = $user->projects()->orderBy('created_at','desc')->get(); $i = 0; $j = 0;?>
+            @foreach($projects as $project)
 
-                <div class="col-md-6">
-                    <div class="post-profile projects">
-                        <h2 class="title"><a href="#">Nerve Gear</a></h2>
-                        <div class="meta-information">
-                            <p class="meta">Posted by <a href="#">Yuuki Asuna</a> on May 26, 2015
-                                &nbsp;&bull;&nbsp;<a href="#" class="permalink">Full Project</a></p>
-                        </div>
-                            <div class="entry">
-                                <p><img src="{{asset('img/nervegear.png')}}" width="800" height="300" alt="" /></p>
-                                <p>The NerveGear (ナーヴギア, Nāvugia?) is the second generation of FullDive technology made by Kayaba Akihiko, released in May 2022. The NerveGear is a streamlined helmet coated in dark blue. At the back, it has a wire of the same color stretched out of a long pad. It also has a battery and internal memory to store data from the games. 30% of the NerveGear's weight is from its internal battery. The NerveGear's high density microwave transceivers can determine what the user's face looks like. The transceivers not only block every transmission from the brain to the body, but also from the body to the brain, thus, while using it, the player is completely insensate to the physical world. While details are never specified, the powerful electromagnet is able to destroy a person's brain, and SAO's operating system has been programmed to do so if the player's hit points are reduced to zero. Despite the exact method that kills a player being disclosed in the story, some of the signs left behind in the brain are cerebral hemorrhaging, and arterial occlusion. The NerveGear is equipped with a new generation diamond semiconductor central processor. To use the NerveGear, the player wears the game console over the head. Then it is recommended for the player to find a comfortable position to station the body, commonly being a bed. Afterwards, the game will load by the initiation words «Link Start».</p>
+                @if($i == 0)
+                <div class="row" style="margin-bottom:2%;">
+                @endif
+
+                    <div class="col-md-6">
+                        <div class="post-profile projects">
+                            <h2 class="title"><a href="#">{{$project->project_title}}</a> [<a href="{{route('edit_startup_project',array('nama_startup'=>session('current_user')->nama_perusahaan, 'nama_project'=>$project->project_title, 'id_project'=>$project->id_project))}}" style="color: #337ab7">Edit</a>]</h2>
+                            <div class="meta-information">
+                                <p class="meta">Posted on {{DateToIndo($project->created_at)}}
+                                    &nbsp;&bull;&nbsp;<a href="#" class="permalink">Full Project</a></p>
+                            </div>
+                                <div class="entry">
+                                    <p><img src="{{$project->project_image_url}}" width="800" height="300" alt="" /></p>
+                                    <p>
+                                        <?php
+                                            $description = $project->project_description;
+                                            $formatted_description = nl2br($description);
+                                            echo $formatted_description;
+                                        ?>
+                                    </p>
+                            </div>
                         </div>
                     </div>
+
+                <?php $i++; $j++;?>
+
+                @if($i == 2 || $j == $user->jumlah_project)
+                <?php $i = 0; ?>
                 </div>
-            </div>
+                @endif
+
+            @endforeach
 
             <div class="row">
                 <a class="show-more-project" href="#">Show More Project</a>
@@ -138,90 +149,48 @@
 
             <div class="review">
 
-                <div class="row">
+                <?php
+                    $komentars = $user->komentars()->orderBy('updated_at','desc')->get();
+                    $i = 0;
+                    $j = 0;
+                ?>
+
+                @foreach($komentars as $komentar)
+
+                    @if($i == 0)
+                        <div class="row" style="margin-bottom: 2%">
+                    @endif
 
                     <div class="col-md-3">
                         <div class="review-wrapper">
                             <div class="review-header">
-                                <h5 class="username">Gunarto Darsan</h5>
+                                <h5 class="username">{{$komentar->nama_komentator}}</h5>
+                                <h5>{{DateToIndo($komentar->updated_at)}}</h5>
                                 <div id="rating" class="stat">
                                     <div class="statVal">
                                         <span class="ui-rater">
-                                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
-                                            <span class="ui-rater-rating">5.0</span>&#160;
+                                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:{{$komentar->rating_score/5*90}}px"></span></span>
+                                            <span class="ui-rater-rating">{{$komentar->rating_score}}</span>&#160;
                                         </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="review-content">
                                 <p class="user-review">
-                                    love it banget manteb dah... recommended marketplace
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="review-wrapper">
-                            <div class="review-header">
-                                <h5 class="username">Huang Ruliang</h5>
-                                <div id="rating" class="stat">
-                                    <div class="statVal">
-                                        <span class="ui-rater">
-                                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
-                                            <span class="ui-rater-rating">5.0</span>&#160;
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="review-content">
-                                <p class="user-review">
-                                    aman dan to the point bgt bagus makin hari makin semangat buka app ini.ditingkatkan terus !!
-                                    </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="review-wrapper">
-                            <div class="review-header">
-                                <h5 class="username">Fajrin Rasyid</h5>
-                                <div id="rating" class="stat">
-                                    <div class="statVal">
-                                        <span class="ui-rater">
-                                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
-                                            <span class="ui-rater-rating">5.0</span>&#160;
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="review-content">
-                                <p class="user-review">
-                                    Very fast, cocok untuk segala penjual As described, sangat cepat dan halus. Penjual partai besar maupun kecil harus mencoba :)
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="review-wrapper">
-                            <div class="review-header">
-                                <h5 class="username">Cemy Nugroho</h5>
-                                <div id="rating" class="stat">
-                                    <div class="statVal">
-                                        <span class="ui-rater">
-                                            <span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:90px"></span></span>
-                                            <span class="ui-rater-rating">5.0</span>&#160;
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="review-content">
-                                <p class="user-review">
-                                    Best Online Shop Aplikasi ini sgt membantu sy dlm membeli barang atau menjual barang, this is the best online shop, easy n safety for shop. Awesome
+                                    {{$komentar->komentar}}
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                </div>
+                    <?php $i++; $j++; ?>
+
+                    @if($i == 4 || $j == $user->jumlah_pemberi_rating)
+                        <?php $i = 0?>
+                        </div>
+                    @endif
+
+                @endforeach
 
             </div>
 
@@ -231,19 +200,40 @@
 
             <h1 class="section-title">Tulis Review</h1>
 
-            <form class="form-review">
+            <form action="{{route('add_komentar')}}" onsubmit="return submit_rating()" class="form-review" method="post">
               <div class="form-group">
                 <label for="InputName">Nama</label>
-                <input type="text" class="form-control" id="name" placeholder="Nama" required>
+                <input type="text" class="form-control" id="name" name="nama_komentator" placeholder="Nama" required>
               </div>
               <div class="form-group">
                 <label for="InputEmailAddress">Alamat Email</label>
-                <input type="email" class="form-control" id="emailAddress" placeholder="Alamat Email" required>
+                <input type="email" class="form-control" id="emailAddress" name="email_komentator" placeholder="Alamat Email" required>
+              </div>
+              <div class="form-group">
+                <label for="rating_score">Rating</label>
+                <br>
+                <span class="rating">
+                    <input type="radio" class="rating-input" id="rating-input-1-5" onclick="rating_clicked(5)" name="rating-input-1"/>
+                    <label for="rating-input-1-5" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-4" onclick="rating_clicked(4)" name="rating-input-1"/>
+                    <label for="rating-input-1-4" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-3" onclick="rating_clicked(3)" name="rating-input-1"/>
+                    <label for="rating-input-1-3" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-2" onclick="rating_clicked(2)" name="rating-input-1"/>
+                    <label for="rating-input-1-2" class="rating-star"></label>
+                    <input type="radio" class="rating-input" id="rating-input-1-1" onclick="rating_clicked(1)" name="rating-input-1" checked/>
+                    <label for="rating-input-1-1" class="rating-star"></label>
+                </span>
               </div>
               <div class="form-group">
                 <label for="InputReview">Review</label>
-                <textarea class="form-control" id="review" placeholder="Tuliskan Review Anda" required rows="5" style="resize: vertical"></textarea>
+                <textarea class="form-control" id="review" name="review_komentator" placeholder="Tuliskan Review Anda" required rows="5" style="resize: vertical"></textarea>
               </div>
+              <input type="hidden" id="id_user" name="id_user" value="{{$id_user}}">
+              <input type="hidden" id="transaction_token" name="transaction_token" value="{{Hash::make($user->username)}}" />
+              <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+              <input type="hidden" name="rating_score" id="nilai-rating" value="" />
+              <input type="hidden" name="url_callback" value="{{\Illuminate\Support\Facades\Request::fullUrl()}}" />
               <input type="submit" class="btn btn-primary" value="Tulis" />
             </form>
 
@@ -255,9 +245,38 @@
 </div>
 
 <script>
+    var rating_score = 1;
+
+    function rating_clicked(rating)
+    {
+        rating_score = rating;
+    }
+
+    function submit_rating()
+    {
+        $('#nilai-rating').val(rating_score);
+        return true;
+    }
+</script>
+
+@if(session('komentar_success_message'))
+<script>
+    $('#basic_modal_title').text('Berhasil menambahkan review');
+    $('#basic_modal_body').find('p').text('Review Anda berhasil ditambahkan.');
+    $('#basic_modal').modal('show');
+</script>
+@endif
+
+<script>
     $('#menu_beranda').removeClass();
     $('#menu_startup').removeClass();
     $('#menu_investor').removeClass();
+    $('.show-more-project').click(function() {
+        return false;
+    });
+    $('.show-more-review').click(function() {
+        return false;
+    });
 </script>
 
 @stop
