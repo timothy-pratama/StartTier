@@ -14,7 +14,7 @@
     @endif
 @else
     @include('navbar.guest')
-@endif@stop
+@endif
 
 @section('content')
 <h1>{{$nama_investor}}</h1>
