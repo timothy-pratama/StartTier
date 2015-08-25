@@ -114,7 +114,7 @@
 
                     <div class="col-md-6">
                         <div class="post-profile projects">
-                            <h2 class="title"><a href="#">{{$project->project_title}}</a> [<a href="{{route('edit_startup_project',array('nama_startup'=>session('current_user')->nama_perusahaan, 'nama_project'=>$project->project_title, 'id_project'=>$project->id_project))}}" style="color: #337ab7">Edit</a>]</h2>
+                            <h2 class="title"><a href="#">{{$project->project_title}}</a></h2>
                             <div class="meta-information">
                                 <p class="meta">Posted on {{DateToIndo($project->created_at)}}
                                     &nbsp;&bull;&nbsp;<a href="#" class="permalink">Full Project</a></p>
