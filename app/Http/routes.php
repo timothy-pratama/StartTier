@@ -45,8 +45,9 @@ Route::post('startup/update_project', ['uses'=>'startupController@updateProject'
 Route::post('startup/tambah_project', ['uses'=>'startupController@newProject', 'as'=>'startup_new_project']);
 
 /* routing email */
-Route::get('/email/{username}', ['uses'=>'emailController@index','as'=>'email']);
 Route::get('/{nama_perusahaan}/email/inbox',['uses'=>'emailController@getInbox','as'=>'get_inbox']);
+Route::get('/{nama_perusahaan}/email/outbox',['uses'=>'emailController@getOutbox','as'=>'get_outbox']);
+Route::get('/{nama_perusahaan}/email/trashbox',['uses'=>'emailController@getTrashbox','as'=>'get_trashbox']);
 
 /* Service Endpoint */
 Route::get('/API/user/available',['uses'=>'loginController@checkUser','as'=>'check_user']);

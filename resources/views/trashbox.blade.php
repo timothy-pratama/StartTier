@@ -92,7 +92,7 @@
 </div>
 
 <script>
-    $('#inbox').addClass('active');
+    $('#trashbox').addClass('active');
 </script>
 
 @endsection
