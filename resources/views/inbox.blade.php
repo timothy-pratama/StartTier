@@ -20,6 +20,8 @@
 
 @section('content')
 
+@include('modal.compose_message_modal')
+
 <div class="container">
     <div class="row">
         <div class="col-sm-3 col-md-2"></div>
@@ -45,7 +47,7 @@
     <hr>
     <div class="row">
         <div class="col-sm-3 col-md-2">
-            <a href="#" class="btn btn-danger btn-sm btn-block" role="button"><i class="glyphicon glyphicon-edit"></i> Buat Pesan</a>
+            <a href="#" id="compose-message" class="btn btn-danger btn-sm btn-block" role="button"><i class="glyphicon glyphicon-edit"></i> Buat Pesan</a>
             <hr>
             <ul class="nav nav-pills nav-stacked">
                 <li id="inbox"><a href="{{route('get_inbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Kotak Masuk<span class="badge pull-right" style="margin-top: 3px;">32</span></a></li>
@@ -93,6 +95,13 @@
 
 <script>
     $('#inbox').addClass('active');
+</script>
+
+<script>
+    $('#compose-message').click(function(){
+        $('#modal-compose-message').modal('show');
+        return false;
+    });
 </script>
 
 @endsection
