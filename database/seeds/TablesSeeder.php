@@ -18,6 +18,10 @@ class TablesSeeder extends Seeder
         $max_komentar = 12;
         $min_project = 1;
         $max_project = 10;
+        $jumlah_inbox_min = 10;
+        $jumlah_inbox_max = 20;
+        $jumlah_outbox_min = 10;
+        $jumlah_outbox_max = 20;
 
         $maximum_available_id = $startup_accounts + $investor_accounts;
 
@@ -84,5 +88,58 @@ class TablesSeeder extends Seeder
             $user->jumlah_pemberi_rating = $user->komentars()->count();
             $user->save();
         }
+
+        // generate pesan startup inbox
+        for($i = 0; $i < mt_rand($jumlah_inbox_min, $jumlah_inbox_max); $i++)
+        {
+            $pesan = factory(\App\Pesan::class)->make();
+            $pesan->id_sender = mt_rand(51,100);
+            $pesan->id_receiver = 1;
+            $pesan->box = 'inbox';
+            if(mt_rand(1,100)<= 50)
+            {
+                $pesan->read = true;
+            } else {
+                $pesan->read = false;
+            }
+            $pesan->save();
+        }
+
+        // generate pesan startup outbox
+        for($i = 0; $i < mt_rand($jumlah_inbox_min, $jumlah_inbox_max); $i++)
+        {
+            $pesan = factory(\App\Pesan::class)->make();
+            $pesan->id_receiver = mt_rand(51,100);
+            $pesan->id_sender = 1;
+            $pesan->box = 'outbox';
+            $pesan->save();
+        }
+
+        // generate pesan investor inbox
+        for($i = 0; $i < mt_rand($jumlah_inbox_min, $jumlah_inbox_max); $i++)
+        {
+            $pesan = factory(\App\Pesan::class)->make();
+            $pesan->id_sender = mt_rand(1,50);
+            $pesan->id_receiver = 51;
+            $pesan->box = 'inbox';
+            if(mt_rand(1,100)<= 50)
+            {
+                $pesan->read = true;
+            } else {
+                $pesan->read = false;
+            }
+            $pesan->save();
+        }
+
+        // generate pesan startup outbox
+        for($i = 0; $i < mt_rand($jumlah_inbox_min, $jumlah_inbox_max); $i++)
+        {
+            $pesan = factory(\App\Pesan::class)->make();
+            $pesan->id_receiver = mt_rand(1,50);
+            $pesan->id_sender = 51;
+            $pesan->box = 'inbox';
+            $pesan->save();
+        }
+
     }
 }

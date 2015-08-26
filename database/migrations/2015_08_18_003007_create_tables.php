@@ -50,10 +50,11 @@ class CreateTables extends Migration
             $table->increments('id_pesan');
             $table->integer('id_sender');
             $table->integer('id_receiver');
-            $table->text('isi_pesan');
-            $table->string('box');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->text('isi_pesan')->default('');
+            $table->string('box')->default('inbox');
+            $table->boolean('read')->default(false);
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
         });
 
         Schema::create('project', function(Blueprint $table) {

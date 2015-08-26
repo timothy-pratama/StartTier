@@ -16,6 +16,16 @@ class Pengguna extends Model
 
     public function projects()
     {
-        return$this->hasMany('App\Project','id_project_owner','id_user');
+        return $this->hasMany('App\Project','id_project_owner','id_user');
+    }
+
+    public function sent_messages()
+    {
+        return $this->hasMany('App\Pesan','id_sender','id_user');
+    }
+
+    public function recv_messages()
+    {
+        return $this->hasMany('App\Pesan','id_receiver','id_user');
     }
 }

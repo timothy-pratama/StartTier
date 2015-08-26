@@ -70,3 +70,11 @@ $factory->define(\App\Project::class, function(Faker\Generator $faker) {
         'updated_at'=>$faker->dateTimeThisYear,
    ];
 });
+
+$factory->define(\App\Pesan::class, function(\Faker\Generator $faker) {
+   return [
+        'isi_pesan'=>$faker->realText(mt_rand(500, 750)),
+        'created_at'=>$faker->dateTimeThisYear,
+        'updated_at'=>$faker->dateTimeThisYear,
+   ];
+});
