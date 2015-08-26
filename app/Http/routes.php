@@ -46,6 +46,7 @@ Route::post('startup/tambah_project', ['uses'=>'startupController@newProject', '
 
 /* routing email */
 Route::get('/email/{username}', ['uses'=>'emailController@index','as'=>'email']);
+Route::get('/{nama_perusahaan}/email/inbox',['uses'=>'emailController@getInbox','as'=>'get_inbox']);
 
 /* Service Endpoint */
 Route::get('/API/user/available',['uses'=>'loginController@checkUser','as'=>'check_user']);

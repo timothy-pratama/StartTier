@@ -27,7 +27,7 @@
         </form>
       </li>
       <li>
-        <button type="button" class="btn btn-default" aria-label="Left Align" style="top: 10px; position: relative; background-color: rgba(34,34,34,1); border-color: rgba(34,34,34,1)">
+        <button type="button" onclick="goToInbox()" class="btn btn-default" aria-label="Left Align" style="top: 10px; position: relative; background-color: rgba(34,34,34,1); border-color: rgba(34,34,34,1)">
           <span class="glyphicon glyphicon-envelope message-notification" aria-hidden="true"></span>
         </button>
       </li>
@@ -47,3 +47,10 @@
     </div>
   </div>
 </nav>
+
+<script>
+    function goToInbox()
+    {
+        window.location.href = "{{route('get_inbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}";
+    }
+</script>

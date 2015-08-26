@@ -47,6 +47,6 @@
 <script>
     function onButtonMessageClicked()
     {
-        window.location.href = "{{route('email',array('username'=>'username'))}}";
+        window.location.href = "{{route('get_inbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}";
     }
 </script>
