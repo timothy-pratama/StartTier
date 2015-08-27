@@ -24,7 +24,7 @@
 @include('utilities.utilities')
 
 <?php
-    $outboxes = \App\Pengguna::find(session('current_user')->id_user)->sent_messages()->orderBy('updated_at','desc')->get();
+    $outboxes = \App\Pengguna::find(session('current_user')->id_user)->sent_messages()->orderBy('created_at','desc')->get();
 ?>
 
 <div class="container">
@@ -32,7 +32,7 @@
         <div class="col-sm-3 col-md-2"></div>
         <div class="col-sm-9 col-md-10">
             <!-- Split button -->
-            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh">
+            <button type="button" class="btn btn-default" data-toggle="tooltip" onclick="reloadPage();" title="Refresh">
                 &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;&nbsp;</button>
             <!-- Single button -->
             <div class="btn-group">
@@ -71,15 +71,15 @@
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
                     @foreach($outboxes as $outbox)
-                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$outbox->id_pesan])}}" class="list-group-item">
+                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$outbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item">
                             <div class="checkbox">
                                 <label style="padding-top: 6px;">
                                     <input class="{{$outbox->id_pesan}}" type="checkbox">
                                 </label>
                             </div>
-                            <span class="name" style="min-width: 230px; display: inline-block;">{{\App\Pengguna::find($outbox->id_receiver)->nama_perusahaan}}</span>
+                            <span class="name" style="min-width: 250px; display: inline-block;">To: {{\App\Pengguna::find($outbox->id_receiver)->nama_perusahaan}}</span>
                             <span class="">{{$outbox->judul_pesan}}</span>
-                            <span class="badge" style="margin-top: 3px">{{DateToIndo($outbox->updated_at)}}</span>
+                            <span class="badge" style="margin-top: 3px">{{DateToIndo($outbox->created_at)}}</span>
                         </a>
                     @endforeach
                     </div>
@@ -91,6 +91,18 @@
 
 <script>
     $('#outbox').addClass('active');
+
+    function reloadPage()
+    {
+        location.reload();
+    }
+
+    $('#compose-message').click(function(){
+        $('#modal-compose-message').modal('show');
+        return false;
+    });
 </script>
+
+
 
 @endsection

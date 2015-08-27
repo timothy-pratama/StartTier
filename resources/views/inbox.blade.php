@@ -24,7 +24,7 @@
 @include('modal.compose_message_modal')
 
 <?php
-    $inboxes = \App\Pengguna::find(session('current_user')->id_user)->recv_messages()->orderBy('updated_at','desc')->get();
+    $inboxes = \App\Pengguna::find(session('current_user')->id_user)->recv_messages()->orderBy('created_at','desc')->get();
 ?>
 
 <div class="container">
@@ -32,7 +32,7 @@
         <div class="col-sm-3 col-md-2"></div>
         <div class="col-sm-9 col-md-10">
             <!-- Split button -->
-            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh">
+            <button type="button" onclick="reloadPage()" class="btn btn-default" data-toggle="tooltip" title="Refresh">
                 &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;&nbsp;</button>
             <!-- Single button -->
             <div class="btn-group">
@@ -40,7 +40,7 @@
                     Aksi <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Tandai semua dibaca</a></li>
+                    {{--<li><a href="#">Tandai semua dibaca</a></li>--}}
                     <li><a href="#">Hapus</a></li>
                 </ul>
             </div>
@@ -71,20 +71,20 @@
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
                     @foreach($inboxes as $inbox)
-                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$inbox->id_pesan])}}" class="list-group-item <?php if($inbox->read){echo 'read';} ?> ">
+                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$inbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item <?php if($inbox->read){echo 'read';} ?> ">
                             <div class="checkbox">
                                 <label style="padding-top: 6px;">
                                     <input class="{{$inbox->id_pesan}}" type="checkbox">
                                 </label>
                             </div>
                             @if(!$inbox->read)
-                                <span class="name" style="min-width: 230px; display: inline-block; font-weight: bold">{{\App\Pengguna::find($inbox->id_sender)->nama_perusahaan}}</span>
+                                <span class="name" style="min-width: 250px; display: inline-block; font-weight: bold">{{\App\Pengguna::find($inbox->id_sender)->nama_perusahaan}}</span>
                                 <span class="" style="font-weight: bold">{{$inbox->judul_pesan}}</span>
                             @else
-                                <span class="name" style="min-width: 230px; display: inline-block;">{{\App\Pengguna::find($inbox->id_sender)->nama_perusahaan}}</span>
+                                <span class="name" style="min-width: 250px; display: inline-block;">{{\App\Pengguna::find($inbox->id_sender)->nama_perusahaan}}</span>
                                 <span class="">{{$inbox->judul_pesan}}</span>
                             @endif
-                            <span class="badge" style="margin-top: 3px">{{DateToIndo($inbox->updated_at)}}</span>
+                            <span class="badge" style="margin-top: 3px">{{DateToIndo($inbox->created_at)}}</span>
                         </a>
                     @endforeach
                     </div>
@@ -103,6 +103,11 @@
         $('#modal-compose-message').modal('show');
         return false;
     });
+
+    function reloadPage()
+    {
+        location.reload();
+    }
 </script>
 
 @endsection

@@ -21,13 +21,16 @@
 @section('content')
 
 @include('modal.compose_message_modal')
+@include('utilities.utilities')
+
+<?php $message = \App\Pesan::find($id_pesan); ?>
 
 <div class="container">
     <div class="row">
         <div class="col-sm-3 col-md-2"></div>
         <div class="col-sm-9 col-md-10">
             <!-- Split button -->
-            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh">
+            <button onclick="goBack();" type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh">
                 &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;&nbsp;</button>
             <!-- Single button -->
             <div class="btn-group">
@@ -59,13 +62,27 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group-item">
-                        <div class="email-title"><b>[Email Title]</b></div>
+                        <div class="email-title"><b>{{$message->judul_pesan}}</b></div>
                         <hr>
-                        <div class="email-sender"><b>[Pengirim]</b>&lt;email pengirim&gt;</div>
+                        @if($message->id_sender != session('current_user')->id_user)
+                            <?php $user = \App\Pengguna::find($message->id_sender) ?>
+                            @if($user->tipe === 'startup')
+                                <div class="email-sender"><b>{{$user->nama_perusahaan}}</b> &lt;<a href="{{route('profile_startup',['nama_startup'=>$user->nama_perusahaan,'id'=>$user->id_user])}}">lihat profil</a>&gt;</div>
+                            @else
+                                <div class="email-sender"><b>{{$user->nama_perusahaan}}</b> &lt;<a href="{{route('profile_investor',['nama_investor'=>$user->nama_perusahaan,'id'=>$user->id_user])}}">lihat profil</a>&gt;</div>
+                            @endif
+                        @else
+                            <?php $user = \App\Pengguna::find($message->id_receiver) ?>
+                            @if($user->tipe === 'startup')
+                                <div class="email-sender"><b>To: {{$user->nama_perusahaan}}</b> &lt;<a href="{{route('profile_startup',['nama_startup'=>$user->nama_perusahaan,'id'=>$user->id_user])}}">lihat profil</a>&gt;</div>
+                            @else
+                                <div class="email-sender"><b>To: {{$user->nama_perusahaan}}</b> &lt;<a href="{{route('profile_investor',['nama_investor'=>$user->nama_perusahaan,'id'=>$user->id_user])}}">lihat profil</a>&gt;</div>
+                            @endif
+                        @endif
                         <hr>
-                        <div class="email-date">[tanggal dikirim]</div>
+                        <div class="email-date">{{DateToIndo($message->created_at)}} ({{$message->created_at->format('H:i')}})</div>
                         <hr>
-                        <div class="email-content">[Email Content]</div>
+                        <div class="email-content">{{nl2br($message->isi_pesan)}}</div>
                     </div>
                 </div>
             </div>
@@ -78,6 +95,12 @@
         $('#modal-compose-message').modal('show');
         return false;
     });
+
+    function goBack()
+    {
+        window.location.href = "{{$fullUrl}}";
+        return false;
+    }
 </script>
 
 @stop

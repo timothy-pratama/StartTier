@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pesan;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -39,7 +40,17 @@ class emailController extends Controller
 
     public function readEmail(Request $request, $nama_perusahaan)
     {
+        $fullUrl = $request->url_callback;
+
+        $pesan = Pesan::find($request->id_message);
+        if(!$pesan->read)
+        {
+            $pesan->read = true;
+            $pesan->save();
+        }
+
         $cookie = $request->cookie('current_user');
-        return view('email',compact('cookie'));
+        $id_pesan = $request->id_message;
+        return view('email',compact('cookie','id_pesan','fullUrl'));
     }
 }

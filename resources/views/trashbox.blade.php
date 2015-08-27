@@ -20,6 +20,7 @@
 
 @section('content')
 
+@include('utilities.utilities')
 @include('modal.compose_message_modal')
 
 <div class="container">
@@ -27,7 +28,7 @@
         <div class="col-sm-3 col-md-2"></div>
         <div class="col-sm-9 col-md-10">
             <!-- Split button -->
-            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh">
+            <button type="button" onclick="reloadPage();" class="btn btn-default" data-toggle="tooltip" title="Refresh">
                 &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-refresh"></span>&nbsp;&nbsp;&nbsp;</button>
             <!-- Single button -->
             <div class="btn-group">
@@ -71,20 +72,10 @@
                                     <input type="checkbox">
                                 </label>
                             </div>
-                            <span class="name" style="min-width: 120px; display: inline-block;">Mark Otto</span>
+                            <span class="name" style="min-width: 250px; display: inline-block;">Mark Otto</span>
                             <span class="">Nice work on the lastest version</span>
                             <span class="badge" style="margin-top: 3px">12:10 AM</span>
                             <span class="pull-right"></span>
-                        </a>
-                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}" class="list-group-item">
-                            <div class="checkbox">
-                                <label style="padding-top: 6px;">
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                            <span class="name" style="min-width: 120px; display: inline-block;">Jason Markus</span>
-                            <span class="">This is big title</span>
-                            <span class="badge" style="margin-top: 3px">12:09 AM</span>
                         </a>
                     </div>
                 </div>
@@ -95,6 +86,16 @@
 
 <script>
     $('#trashbox').addClass('active');
+
+    function reloadPage()
+    {
+        location.reload();
+    }
+
+    $('#compose-message').click(function(){
+        $('#modal-compose-message').modal('show');
+        return false;
+    });
 </script>
 
 @endsection
