@@ -1086,3 +1086,15 @@ li #rating {
     height: 16px;
     background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
 }
+
+.email-sender{
+    font-size: 100%;
+}
+
+.email-title{
+    font-size: 125%;
+}
+
+.email-content{
+    text-align: justify;
+}

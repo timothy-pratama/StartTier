@@ -1,90 +1,85 @@
 @extends('header.master')
+
 @section('navbar')
-@include('navbar.startup')
-@stop
+@if(isset($cookie))
+    <?php
+        $pengguna = \App\Pengguna::where('username',$cookie)->first();
+        Session::put('current_user',$pengguna);
+    ?>
+
+    @if(strcmp(session('current_user')->tipe,'startup') == 0)
+        @include('navbar.startup')
+    @else
+        @include('navbar.investor')
+    @endif
+@else
+    @include('navbar.guest')
+@endif
+@include('email_style')
+@endsection
+
 @section('content')
-<h1>Pesan</h1>
-<div class="container-fluid email_section">
 
-    <div class="col-md-1 leftside_menubar">
-            <ul class="message_menu">
-                <li id="compose-message"><a href="#">Compose</a></li>
-                <li id="inbox-message" class="selected"><a href="#">Inbox</a></li>
-                <li id="sent-message"><a href="#">Sent</a></li>
-                <li id="trash-message"><a href="#">Trash</a></li>
-                <li id="archive-message"><a href="#">Archive</a></li>
-            </ul>
-    </div>
+@include('modal.compose_message_modal')
 
-    <div class="col-md-1"></div>
-
-    <div class="col-md-10">
-
-        <button class="btn btn-default">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"> Hapus</span>
-        </button>
-
-        <button class="btn btn-default">
-            <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> Arsipkan</span>
-        </button>
-
-        <br>
-        <br>
-
-        <div class="email_content">
-
-            <div class="row message unread">
-
-                <div class="col-md-1">
-                    <input type="checkbox" />
-                </div>
-                <div class="col-md-3">
-                    <p>Jan Wira Gotama Putra</p>
-                </div>
-                <div class="col-md-6">
-                    <p>Tawaran Investasi</p>
-                </div>
-                <div class="col-md-2">
-                    <p>26 Juni</p>
-                </div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-2"></div>
+        <div class="col-sm-9 col-md-10">
+            <!-- Split button -->
+            <button type="button" class="btn btn-default" data-toggle="tooltip" title="Refresh">
+                &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;&nbsp;</button>
+            <!-- Single button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Aksi <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Hapus</a></li>
+                </ul>
             </div>
-            <div class="row message">
-
-                <div class="col-md-1">
-                    <input type="checkbox" />
-                </div>
-                <div class="col-md-3">
-                    <p>Timothy Pratama</p>
-                </div>
-                <div class="col-md-6">
-                    <p>Tawaran Kerja Sama</p>
-                </div>
-                <div class="col-md-2">
-                    <p>26 Juni</p>
-                </div>
-
+            <div class="pull-right">
+                <div class="btn-group btn-group-sm"></div>
             </div>
-            <div class="row message">
-
-                <div class="col-md-1">
-                    <input type="checkbox" />
-                </div>
-                <div class="col-md-3">
-                    <p>Christ Angga Saputra</p>
-                </div>
-                <div class="col-md-6">
-                    <p>Investasi dari Tokopedia</p>
-                </div>
-                <div class="col-md-2">
-                    <p>26 Juni</p>
-                </div>
-
-            </div>
-
         </div>
-
     </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <a href="#" id="compose-message" class="btn btn-danger btn-sm btn-block" role="button"><i class="glyphicon glyphicon-edit"></i> Buat Pesan</a>
+            <hr>
+            <ul class="nav nav-pills nav-stacked">
+                <li id="inbox"><a href="{{route('get_inbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Kotak Masuk<span class="badge pull-right" style="margin-top: 3px;">32</span></a></li>
+                <li id="outbox"><a href="{{route('get_outbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Kotak Keluar</a></li>
+                <li id="trashbox"><a href="{{route('get_trashbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Tempat Sampah</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-md-10">
 
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <div class="list-group-item">
+                        <div class="email-title"><b>[Email Title]</b></div>
+                        <hr>
+                        <div class="email-sender"><b>[Pengirim]</b>&lt;email pengirim&gt;</div>
+                        <hr>
+                        <div class="email-content">[Email Content]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    $('#inbox').addClass('active');
+</script>
+
+<script>
+    $('#compose-message').click(function(){
+        $('#modal-compose-message').modal('show');
+        return false;
+    });
+</script>
+
 @stop

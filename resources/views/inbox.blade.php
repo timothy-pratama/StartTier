@@ -65,7 +65,7 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
-                        <a href="#" class="list-group-item">
+                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}" class="list-group-item">
                             <div class="checkbox">
                                 <label style="padding-top: 6px;">
                                     <input type="checkbox">

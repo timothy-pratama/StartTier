@@ -48,6 +48,7 @@ Route::post('startup/tambah_project', ['uses'=>'startupController@newProject', '
 Route::get('/{nama_perusahaan}/email/inbox',['uses'=>'emailController@getInbox','as'=>'get_inbox']);
 Route::get('/{nama_perusahaan}/email/outbox',['uses'=>'emailController@getOutbox','as'=>'get_outbox']);
 Route::get('/{nama_perusahaan}/email/trashbox',['uses'=>'emailController@getTrashbox','as'=>'get_trashbox']);
+Route::get('/{nama_perusahaan}/email/read',['uses'=>'emailController@readEmail','as'=>'read_email']);
 
 /* Service Endpoint */
 Route::get('/API/user/available',['uses'=>'loginController@checkUser','as'=>'check_user']);

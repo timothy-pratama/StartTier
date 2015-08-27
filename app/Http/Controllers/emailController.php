@@ -36,4 +36,10 @@ class emailController extends Controller
         $cookie = $request->cookie('current_user');
         return view('trashbox', compact('nama_perusahaan','cookie'));
     }
+
+    public function readEmail(Request $request, $nama_perusahaan)
+    {
+        $cookie = $request->cookie('current_user');
+        return view('email',compact('cookie'));
+    }
 }
