@@ -50,6 +50,7 @@ class CreateTables extends Migration
             $table->increments('id_pesan');
             $table->integer('id_sender');
             $table->integer('id_receiver');
+            $table->text('judul_pesan')->default('');
             $table->text('isi_pesan')->default('');
             $table->string('box')->default('inbox');
             $table->boolean('read')->default(false);

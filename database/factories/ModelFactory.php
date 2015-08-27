@@ -74,6 +74,7 @@ $factory->define(\App\Project::class, function(Faker\Generator $faker) {
 $factory->define(\App\Pesan::class, function(\Faker\Generator $faker) {
    return [
         'isi_pesan'=>$faker->realText(mt_rand(500, 750)),
+        'judul_pesan'=>$faker->realText(mt_rand(20,40)),
         'created_at'=>$faker->dateTimeThisYear,
         'updated_at'=>$faker->dateTimeThisYear,
    ];

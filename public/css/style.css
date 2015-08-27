@@ -1098,3 +1098,7 @@ li #rating {
 .email-content{
     text-align: justify;
 }
+
+.email-date{
+    font-size: 100%;
+}

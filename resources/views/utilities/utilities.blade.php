@@ -13,4 +13,3 @@ function DateToIndo($date) { // fungsi atau method untuk mengubah tanggal ke for
 		$result = $tgl . " " . $BulanIndo[(int)$bulan-1] . " ". $tahun;
 		return($result);
 }
-?>

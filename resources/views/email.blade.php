@@ -49,7 +49,7 @@
             <a href="#" id="compose-message" class="btn btn-danger btn-sm btn-block" role="button"><i class="glyphicon glyphicon-edit"></i> Buat Pesan</a>
             <hr>
             <ul class="nav nav-pills nav-stacked">
-                <li id="inbox"><a href="{{route('get_inbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Kotak Masuk<span class="badge pull-right" style="margin-top: 3px;">32</span></a></li>
+                <li id="inbox"><a href="{{route('get_inbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Kotak Masuk<span class="badge pull-right" style="margin-top: 3px;">{{session('current_user')->recv_messages()->where('read',false)->count()}}</span></a></li>
                 <li id="outbox"><a href="{{route('get_outbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Kotak Keluar</a></li>
                 <li id="trashbox"><a href="{{route('get_trashbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Tempat Sampah</a></li>
             </ul>
@@ -62,6 +62,8 @@
                         <div class="email-title"><b>[Email Title]</b></div>
                         <hr>
                         <div class="email-sender"><b>[Pengirim]</b>&lt;email pengirim&gt;</div>
+                        <hr>
+                        <div class="email-date">[tanggal dikirim]</div>
                         <hr>
                         <div class="email-content">[Email Content]</div>
                     </div>

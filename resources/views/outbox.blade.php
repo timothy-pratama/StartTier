@@ -21,6 +21,11 @@
 @section('content')
 
 @include('modal.compose_message_modal')
+@include('utilities.utilities')
+
+<?php
+    $outboxes = \App\Pengguna::find(session('current_user')->id_user)->sent_messages()->orderBy('updated_at','desc')->get();
+?>
 
 <div class="container">
     <div class="row">
@@ -50,7 +55,7 @@
             <a href="#" id="compose-message" class="btn btn-danger btn-sm btn-block" role="button"><i class="glyphicon glyphicon-edit"></i> Buat Pesan</a>
             <hr>
             <ul class="nav nav-pills nav-stacked">
-                <li id="inbox"><a href="{{route('get_inbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Kotak Masuk<span class="badge pull-right" style="margin-top: 3px;">32</span></a></li>
+                <li id="inbox"><a href="{{route('get_inbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Kotak Masuk<span class="badge pull-right" style="margin-top: 3px;">{{session('current_user')->recv_messages()->where('read',false)->count()}}</span></a></li>
                 <li id="outbox"><a href="{{route('get_outbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Kotak Keluar</a></li>
                 <li id="trashbox"><a href="{{route('get_trashbox',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}">Tempat Sampah</a></li>
             </ul>
@@ -65,27 +70,18 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
-                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}" class="list-group-item">
+                    @foreach($outboxes as $outbox)
+                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$outbox->id_pesan])}}" class="list-group-item">
                             <div class="checkbox">
                                 <label style="padding-top: 6px;">
-                                    <input type="checkbox">
+                                    <input class="{{$outbox->id_pesan}}" type="checkbox">
                                 </label>
                             </div>
-                            <span class="name" style="min-width: 120px; display: inline-block;">Mark Otto</span>
-                            <span class="">Nice work on the lastest version</span>
-                            <span class="badge" style="margin-top: 3px">12:10 AM</span>
-                            <span class="pull-right"></span>
+                            <span class="name" style="min-width: 230px; display: inline-block;">{{\App\Pengguna::find($outbox->id_receiver)->nama_perusahaan}}</span>
+                            <span class="">{{$outbox->judul_pesan}}</span>
+                            <span class="badge" style="margin-top: 3px">{{DateToIndo($outbox->updated_at)}}</span>
                         </a>
-                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}" class="list-group-item">
-                            <div class="checkbox">
-                                <label style="padding-top: 6px;">
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                            <span class="name" style="min-width: 120px; display: inline-block;">Jason Markus</span>
-                            <span class="">This is big title</span>
-                            <span class="badge" style="margin-top: 3px">12:09 AM</span>
-                        </a>
+                    @endforeach
                     </div>
                 </div>
             </div>
