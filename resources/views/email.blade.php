@@ -72,10 +72,6 @@
 </div>
 
 <script>
-    $('#inbox').addClass('active');
-</script>
-
-<script>
     $('#compose-message').click(function(){
         $('#modal-compose-message').modal('show');
         return false;

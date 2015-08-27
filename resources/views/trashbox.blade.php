@@ -65,7 +65,7 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
-                        <a href="#" class="list-group-item">
+                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}" class="list-group-item">
                             <div class="checkbox">
                                 <label style="padding-top: 6px;">
                                     <input type="checkbox">
@@ -76,12 +76,12 @@
                             <span class="badge" style="margin-top: 3px">12:10 AM</span>
                             <span class="pull-right"></span>
                         </a>
-                        <a href="#" class="list-group-item">
-                                <div class="checkbox">
-                                    <label style="padding-top: 6px;">
-                                        <input type="checkbox">
-                                    </label>
-                                </div>
+                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}" class="list-group-item">
+                            <div class="checkbox">
+                                <label style="padding-top: 6px;">
+                                    <input type="checkbox">
+                                </label>
+                            </div>
                             <span class="name" style="min-width: 120px; display: inline-block;">Jason Markus</span>
                             <span class="">This is big title</span>
                             <span class="badge" style="margin-top: 3px">12:09 AM</span>
