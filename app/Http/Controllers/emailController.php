@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pesan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -108,5 +109,22 @@ class emailController extends Controller
         } else {
             return ('error');
         }
+    }
+
+    public function composeEmail(Request $request)
+    {
+        $penerimaPesan = $request->penerimaPesan;
+        $judulPesan = $request->judulPesan;
+        $isiPesan = $request->isiPesan;
+        $pengirimPesan = $request->pengirimPesan;
+        $pesan = new Pesan();
+        $pesan->id_sender = $pengirimPesan;
+        $pesan->id_receiver = $penerimaPesan;
+        $pesan->judul_pesan = $judulPesan;
+        $pesan->isi_pesan = $isiPesan;
+        $pesan->box = 'outbox';
+        $pesan->read = false;
+        $pesan->save();
+        return redirect($request->url_callback)->with('send_message_success','ok');
     }
 }

@@ -22,6 +22,7 @@
 
 @include('utilities.utilities')
 @include('modal.compose_message_modal')
+@include('modal.basic_modal')
 
 <?php
     $current_user = session('current_user');
@@ -165,5 +166,13 @@
         return false;
     }
 </script>
+
+@if(session('send_message_success'))
+    <script>
+    $('#basic_modal_title').text('Kirim Pesan Berhasil');
+    $('#basic_modal_body').find('p').text('Pesan Anda berhasil dikirim');
+    $('#basic_modal').modal('show');
+    </script>
+@endif
 
 @endsection

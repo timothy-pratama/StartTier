@@ -22,6 +22,7 @@
 
 @include('utilities.utilities')
 @include('modal.compose_message_modal')
+@include('modal.basic_modal')
 
 <?php
     $inboxes = \App\Pengguna::find(session('current_user')->id_user)->recv_messages()->orderBy('created_at','desc')->get();
@@ -132,5 +133,13 @@
         return false;
     }
 </script>
+
+@if(session('send_message_success'))
+    <script>
+    $('#basic_modal_title').text('Kirim Pesan Berhasil');
+    $('#basic_modal_body').find('p').text('Pesan Anda berhasil dikirim');
+    $('#basic_modal').modal('show');
+    </script>
+@endif
 
 @endsection

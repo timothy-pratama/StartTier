@@ -20,6 +20,7 @@
 
 @section('content')
 
+@include('modal.basic_modal')
 @include('modal.compose_message_modal')
 @include('utilities.utilities')
 
@@ -82,7 +83,7 @@
                         <hr>
                         <div class="email-date">{{DateToIndo($message->created_at)}} ({{$message->created_at->format('H:i')}})</div>
                         <hr>
-                        <div class="email-content">{{nl2br($message->isi_pesan)}}</div>
+                        <div class="email-content"><?php echo nl2br($message->isi_pesan);?></div>
                     </div>
                 </div>
             </div>
@@ -102,5 +103,13 @@
         return false;
     }
 </script>
+
+@if(session('send_message_success'))
+    <script>
+    $('#basic_modal_title').text('Kirim Pesan Berhasil');
+    $('#basic_modal_body').find('p').text('Pesan Anda berhasil dikirim');
+    $('#basic_modal').modal('show');
+    </script>
+@endif
 
 @stop
