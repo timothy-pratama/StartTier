@@ -41,7 +41,7 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     {{--<li><a href="#">Tandai semua dibaca</a></li>--}}
-                    <li><a href="#">Hapus</a></li>
+                    <li><a href="#" onclick="return softDelete();">Hapus</a></li>
                 </ul>
             </div>
             <div class="pull-right">
@@ -64,28 +64,30 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox">
-                </span>Inbox</a></li>
+                </span>Kotak Masuk</a></li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
                     @foreach($inboxes as $inbox)
-                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$inbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item <?php if($inbox->read){echo 'read';} ?> ">
-                            <div class="checkbox">
-                                <label style="padding-top: 6px;">
-                                    <input class="{{$inbox->id_pesan}}" type="checkbox">
-                                </label>
-                            </div>
-                            @if(!$inbox->read)
-                                <span class="name" style="min-width: 250px; display: inline-block; font-weight: bold">{{\App\Pengguna::find($inbox->id_sender)->nama_perusahaan}}</span>
-                                <span class="" style="font-weight: bold">{{$inbox->judul_pesan}}</span>
-                            @else
-                                <span class="name" style="min-width: 250px; display: inline-block;">{{\App\Pengguna::find($inbox->id_sender)->nama_perusahaan}}</span>
-                                <span class="">{{$inbox->judul_pesan}}</span>
-                            @endif
-                            <span class="badge" style="margin-top: 3px">{{DateToIndo($inbox->created_at)}}</span>
-                        </a>
+                        @if($inbox->box != 'trashbox')
+                            <a id="checkbox-{{$inbox->id_pesan}}" href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$inbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item <?php if($inbox->read){echo 'read';} ?> ">
+                                <div class="checkbox">
+                                    <label style="padding-top: 6px;">
+                                        <input class="email-checkbox" id="{{$inbox->id_pesan}}" type="checkbox">
+                                    </label>
+                                </div>
+                                @if(!$inbox->read)
+                                    <span class="name" style="min-width: 250px; display: inline-block; font-weight: bold">{{\App\Pengguna::find($inbox->id_sender)->nama_perusahaan}}</span>
+                                    <span class="" style="font-weight: bold">{{$inbox->judul_pesan}}</span>
+                                @else
+                                    <span class="name" style="min-width: 250px; display: inline-block;">{{\App\Pengguna::find($inbox->id_sender)->nama_perusahaan}}</span>
+                                    <span class="">{{$inbox->judul_pesan}}</span>
+                                @endif
+                                <span class="badge" style="margin-top: 3px">{{DateToIndo($inbox->created_at)}}</span>
+                            </a>
+                        @endif
                     @endforeach
                     </div>
                 </div>
@@ -107,6 +109,27 @@
     function reloadPage()
     {
         location.reload();
+    }
+
+    function softDelete()
+    {
+        var checkboxes = [];
+        $('.email-checkbox:checked').each(function() {
+            checkboxes.push($(this).attr('id'));
+        });
+        var url= "{{route('soft_delete_email')}}?ids="+checkboxes+'&token='+'{{Hash::make(session('current_user')->username.session('current_user')->password)}}';
+
+        $.get(url,function(data) {
+            if(data == 'ok') {
+                checkboxes.forEach(function (id) {
+                    $('#checkbox-'+id).hide(1000, function(){
+                        $(this).remove();
+                    });
+                });
+            }
+        });
+
+        return false;
     }
 </script>
 

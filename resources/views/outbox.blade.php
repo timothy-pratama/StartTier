@@ -40,8 +40,7 @@
                     Aksi <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Tandai semua dibaca</a></li>
-                    <li><a href="#">Hapus</a></li>
+                    <li><a href="#" onclick="return softDelete();">Hapus</a></li>
                 </ul>
             </div>
             <div class="pull-right">
@@ -64,23 +63,25 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox">
-                </span>Inbox</a></li>
+                </span>Kotak Keluar</a></li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
                     @foreach($outboxes as $outbox)
-                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$outbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item">
-                            <div class="checkbox">
-                                <label style="padding-top: 6px;">
-                                    <input class="{{$outbox->id_pesan}}" type="checkbox">
-                                </label>
-                            </div>
-                            <span class="name" style="min-width: 250px; display: inline-block;">To: {{\App\Pengguna::find($outbox->id_receiver)->nama_perusahaan}}</span>
-                            <span class="">{{$outbox->judul_pesan}}</span>
-                            <span class="badge" style="margin-top: 3px">{{DateToIndo($outbox->created_at)}}</span>
-                        </a>
+                        @if($outbox->box != 'trashbox')
+                            <a id="checkbox-{{$outbox->id_pesan}}" href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$outbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item">
+                                <div class="checkbox">
+                                    <label style="padding-top: 6px;">
+                                        <input class="email-checkbox" id="{{$outbox->id_pesan}}" type="checkbox">
+                                    </label>
+                                </div>
+                                <span class="name" style="min-width: 250px; display: inline-block;">To: {{\App\Pengguna::find($outbox->id_receiver)->nama_perusahaan}}</span>
+                                <span class="">{{$outbox->judul_pesan}}</span>
+                                <span class="badge" style="margin-top: 3px">{{DateToIndo($outbox->created_at)}}</span>
+                            </a>
+                        @endif
                     @endforeach
                     </div>
                 </div>
@@ -101,6 +102,27 @@
         $('#modal-compose-message').modal('show');
         return false;
     });
+
+    function softDelete()
+    {
+        var checkboxes = [];
+        $('.email-checkbox:checked').each(function() {
+            checkboxes.push($(this).attr('id'));
+        });
+        var url= "{{route('soft_delete_email')}}?ids="+checkboxes+'&token='+'{{Hash::make(session('current_user')->username.session('current_user')->password)}}';
+
+        $.get(url,function(data) {
+            if(data == 'ok') {
+                checkboxes.forEach(function (id) {
+                    $('#checkbox-'+id).hide(1000, function(){
+                        $(this).remove();
+                    });
+                });
+            }
+        });
+
+        return false;
+    }
 </script>
 
 

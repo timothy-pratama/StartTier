@@ -23,6 +23,14 @@
 @include('utilities.utilities')
 @include('modal.compose_message_modal')
 
+<?php
+    $current_user = session('current_user');
+    $trashboxes = \App\Pesan::where(function ($query) {
+        $query->where('id_sender',session('current_user')->id_user)
+              ->orWhere('id_receiver',session('current_user')->id_user);
+    })->where('box','trashbox')->get();
+?>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-3 col-md-2"></div>
@@ -36,8 +44,8 @@
                     Aksi <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Tandai semua dibaca</a></li>
-                    <li><a href="#">Hapus</a></li>
+                    <li><a href="#" onclick="return restore();">Kembalikan</a></li>
+                    <li><a href="#" onclick="return hardDelete();">Hapus</a></li>
                 </ul>
             </div>
             <div class="pull-right">
@@ -60,23 +68,41 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#home" data-toggle="tab"><span class="glyphicon glyphicon-inbox">
-                </span>Inbox</a></li>
+                </span>Kotak Sampah</a></li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
-                        <a href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan])}}" class="list-group-item">
-                            <div class="checkbox">
-                                <label style="padding-top: 6px;">
-                                    <input type="checkbox">
-                                </label>
-                            </div>
-                            <span class="name" style="min-width: 250px; display: inline-block;">Mark Otto</span>
-                            <span class="">Nice work on the lastest version</span>
-                            <span class="badge" style="margin-top: 3px">12:10 AM</span>
-                            <span class="pull-right"></span>
-                        </a>
+                    @foreach($trashboxes as $trashbox)
+                        @if($trashbox->id_sender != session('current_user')->id_user)
+                            @if($trashbox->box == 'trashbox')
+                                <a id="checkbox-{{$trashbox->id_pesan}}" href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$trashbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item <?php if($trashbox->read){echo 'read';} ?> ">
+                                    <div class="checkbox">
+                                        <label style="padding-top: 6px;">
+                                            <input class="email-checkbox" id="{{$trashbox->id_pesan}}" type="checkbox">
+                                        </label>
+                                    </div>
+                                    <span class="name" style="min-width: 250px; display: inline-block;">{{\App\Pengguna::find($trashbox->id_sender)->nama_perusahaan}}</span>
+                                    <span class="">{{$trashbox->judul_pesan}}</span>
+                                    <span class="badge" style="margin-top: 3px">{{DateToIndo($trashbox->created_at)}}</span>
+                                </a>
+                            @endif
+                        @else
+                            @if($trashbox->box == 'trashbox')
+                                <a id="checkbox-{{$trashbox->id_pesan}}" href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$trashbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item">
+                                    <div class="checkbox">
+                                        <label style="padding-top: 6px;">
+                                            <input class="email-checkbox" id="{{$trashbox->id_pesan}}" type="checkbox">
+                                        </label>
+                                    </div>
+                                    <span class="name" style="min-width: 250px; display: inline-block;">To: {{\App\Pengguna::find($trashbox->id_receiver)->nama_perusahaan}}</span>
+                                    <span class="">{{$trashbox->judul_pesan}}</span>
+                                    <span class="badge" style="margin-top: 3px">{{DateToIndo($trashbox->created_at)}}</span>
+                                </a>
+                            @endif
+                        @endif
+                    @endforeach
                     </div>
                 </div>
             </div>
@@ -96,6 +122,48 @@
         $('#modal-compose-message').modal('show');
         return false;
     });
+
+    function hardDelete()
+    {
+        var checkboxes = [];
+        $('.email-checkbox:checked').each(function() {
+            checkboxes.push($(this).attr('id'));
+        });
+        var url= "{{route('hard_delete_email')}}?ids="+checkboxes+'&token='+'{{Hash::make(session('current_user')->username.session('current_user')->password)}}';
+
+        $.get(url,function(data) {
+            if(data == 'ok') {
+                checkboxes.forEach(function (id) {
+                    $('#checkbox-'+id).hide(1000, function(){
+                        $(this).remove();
+                    });
+                });
+            }
+        });
+
+        return false;
+    }
+
+    function restore()
+    {
+        var checkboxes = [];
+        $('.email-checkbox:checked').each(function() {
+            checkboxes.push($(this).attr('id'));
+        });
+        var url= "{{route('restore_email')}}?ids="+checkboxes+'&token='+'{{Hash::make(session('current_user')->username.session('current_user')->password)}}';
+
+        $.get(url,function(data) {
+            if(data == 'ok') {
+                checkboxes.forEach(function (id) {
+                    $('#checkbox-'+id).hide(1000, function(){
+                        $(this).remove();
+                    });
+                });
+            }
+        });
+
+        return false;
+    }
 </script>
 
 @endsection

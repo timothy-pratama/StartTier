@@ -49,6 +49,9 @@ Route::get('/{nama_perusahaan}/email/inbox',['uses'=>'emailController@getInbox',
 Route::get('/{nama_perusahaan}/email/outbox',['uses'=>'emailController@getOutbox','as'=>'get_outbox']);
 Route::get('/{nama_perusahaan}/email/trashbox',['uses'=>'emailController@getTrashbox','as'=>'get_trashbox']);
 Route::get('/{nama_perusahaan}/email/read',['uses'=>'emailController@readEmail','as'=>'read_email']);
+Route::get('/email/soft-delete-email',['uses'=>'emailController@softDelete','as'=>'soft_delete_email']);
+Route::get('/email/hard-delete-email',['uses'=>'emailController@hardDelete','as'=>'hard_delete_email']);
+Route::get('/email/restore-email',['uses'=>'emailController@restoreEmail','as'=>'restore_email']);
 
 /* Service Endpoint */
 Route::get('/API/user/available',['uses'=>'loginController@checkUser','as'=>'check_user']);
