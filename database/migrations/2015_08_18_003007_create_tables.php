@@ -54,6 +54,8 @@ class CreateTables extends Migration
             $table->text('isi_pesan')->default('');
             $table->string('box')->default('inbox');
             $table->boolean('read')->default(false);
+            $table->boolean('sender_deleted')->default(false);
+            $table->boolean('receiver_deleted')->default(false);
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

@@ -75,12 +75,22 @@ class emailController extends Controller
 
     public function hardDelete(Request $request)
     {
-        if(Hash::check(session('current_user')->username.session('current_user')->password,$request->token)) {
+        $current_user = session('current_user');
+        if(Hash::check($current_user->username.$current_user->password,$request->token)) {
             $ids = $request->ids;
             $ids = explode(',', $ids);
             foreach($ids as $id)
             {
-                $pesan = Pesan::destroy($id);
+                $pesan = Pesan::find($id);
+                if($pesan->id_sender == $current_user->id_user)
+                {
+                    $pesan->sender_deleted = true;
+                }
+                else
+                {
+                    $pesan->receiver_deleted = true;
+                }
+                $pesan->save();
             }
             return ('ok');
         } else {
