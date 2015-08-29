@@ -19,9 +19,9 @@
 
       <ul class="nav navbar-nav navbar-right">
       <li>
-        <form class="navbar-form" role="search" style="margin-right: 22em">
+        <form class="navbar-form" method="get" action="{{route('search_profile')}}" role="search" style="margin-right: 29em">
           <div class="form-group">
-              <input type="text" class="form-control" placeholder="Cari" style="width: 20em">
+              <input type="text" name="query" class="form-control" placeholder="Cari perusahaan" style="width: 20em" required="">
             </div>
           <input type="submit" class="btn btn-default" value="Cari" />
         </form>

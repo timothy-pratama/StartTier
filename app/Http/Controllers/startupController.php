@@ -177,4 +177,47 @@ class startupController extends Controller
             return('Anda harus login untuk mengakses halaman ini.');
         }
     }
+
+    public function pushThis(Request $request)
+    {
+        $current_user = session('current_user');
+        if(Hash::check($current_user->username.$current_user->password,$request->input('token')))
+        {
+            $pengguna = Pengguna::find($current_user->id_user);
+            $pengguna->pushed_at = new \DateTime('now');
+            $pengguna->token--;
+            $pengguna->save();
+            Session::put('current_user',$pengguna);
+            return redirect()->route('list_startup')->with('push_message','ok');
+        }
+        else
+        {
+            return 'error';
+        }
+    }
+
+    public function beliToken(Request $request)
+    {
+        $current_user = session('current_user');
+        if(Hash::check($current_user->username.$current_user->password,$request->input('token')))
+        {
+            $pengguna = Pengguna::find($current_user->id_user);
+            if($pengguna->saldo >= $request->input('harga'))
+            {
+                $pengguna->saldo = $pengguna->saldo - $request->input('harga');
+                $pengguna->token = $pengguna->token + $request->input('jumlah');
+                $pengguna->save();
+                Session::put('current_user',$pengguna);
+                return 'ok';
+            }
+            else
+            {
+                return 'saldo_tidak_cukup';
+            }
+        }
+        else
+        {
+            return 'error';
+        }
+    }
 }

@@ -68,4 +68,11 @@ class guestController extends Controller
             return redirect($request->url_callback)->with('komentar_success_message','ok');
         }
     }
+
+    public function searchProfile(Request $request)
+    {
+        $cookie = $request->cookie('current_user');
+        $query = '%'.$request->input('query').'%';
+        return view('search_result',compact('cookie','query'));
+    }
 }

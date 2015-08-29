@@ -37,6 +37,8 @@ Route::get('/startup/{nama_startup}/akun/ganti_password',['uses'=>'startupContro
 Route::get('/startup/{nama_startup}/project/buat_project',['uses'=>'startupController@tambahProject','as'=>'startup_add_project']);
 Route::get('/startup/{nama_startup}/project/hapus_project',['uses'=>'startupController@hapusProject','as'=>'startup_hapus_project']);
 Route::get('/project/delete_project',['uses'=>'startupController@deleteProject','as'=>'startup_delete_project']);
+Route::get('/manage_startup/push_startup',['uses'=>'startupController@pushThis','as'=>'push_this']);
+Route::get('/manage_startup/beli_token',['uses'=>'startupController@beliToken','as'=>'beli_token']);
 
 Route::post('/startup/{nama_startup}/edit_profil_startup',['uses'=>'startupController@editProfilStartup','as'=>'edit_profil_startup']);
 Route::post('/startup/{nama_startup}/edit_detil_startup',['uses'=>'startupController@editDetilStartup','as'=>'edit_detil_startup']);
@@ -59,3 +61,4 @@ Route::get('/API/user/available',['uses'=>'loginController@checkUser','as'=>'che
 Route::post('/komentar/add',['uses'=>'guestController@addKomentar','as'=>'add_komentar']);
 
 /* Search Startup / Investor */
+Route::get('profile/search',['uses'=>'guestController@searchProfile','as'=>'search_profile']);
