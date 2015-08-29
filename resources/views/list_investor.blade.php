@@ -52,7 +52,7 @@
                             </span>
                         </div>
                     </div>
-                    <a href="{{route('profile_investor',array('nama_investor'=>$investor->nama_perusahaan, 'id'=>$investor->id_user))}}" class="button">Lihat Startup</a>
+                    <a href="{{route('profile_investor',array('nama_investor'=>$investor->nama_perusahaan, 'id'=>$investor->id_user))}}" class="button">Lihat Investor</a>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                             </span>
                         </div>
                     </div>
-                    <a href="{{route('profile_investor',array('nama_investor'=>$investor->nama_perusahaan, 'id'=>$investor->id_user))}}" class="button">Lihat Startup</a>
+                    <a href="{{route('profile_investor',array('nama_investor'=>$investor->nama_perusahaan, 'id'=>$investor->id_user))}}" class="button">Lihat Investor</a>
                 </div>
             </div>
         </div>
@@ -92,7 +92,7 @@
                             </span>
                         </div>
                     </div>
-                    <a href="{{route('profile_investor',array('nama_investor'=>$investor->nama_perusahaan, 'id'=>$investor->id_user))}}" class="button">Lihat Startup</a>
+                    <a href="{{route('profile_investor',array('nama_investor'=>$investor->nama_perusahaan, 'id'=>$investor->id_user))}}" class="button">Lihat Investor</a>
                 </div>
             </div>
         </div>
