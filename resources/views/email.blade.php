@@ -39,7 +39,7 @@
                     Aksi <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Hapus</a></li>
+                    <li><a href="{{route('soft_delete_from_email',['id_pesan'=>$id_pesan,'token'=>Hash::make(session('current_user')->username.session('current_user')->password)])}}">Hapus</a></li>
                 </ul>
             </div>
             <div class="pull-right">

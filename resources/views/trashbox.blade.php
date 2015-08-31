@@ -29,7 +29,10 @@
     $trashboxes = \App\Pesan::where(function ($query) {
         $query->where('id_sender',session('current_user')->id_user)
               ->orWhere('id_receiver',session('current_user')->id_user);
-    })->where('box','trashbox')->orderBy('created_at','desc')->get();
+    })->where(function ($query) {
+        $query->where('box_sender','trashbox')
+              ->orWhere('box_receiver','trashbox');
+    })->orderBy('created_at','desc')->get();
 ?>
 
 <div class="container">
@@ -77,7 +80,7 @@
                     <div class="list-group">
                     @foreach($trashboxes as $trashbox)
                         @if($trashbox->id_sender != session('current_user')->id_user)
-                            @if($trashbox->box == 'trashbox' && $trashbox->receiver_deleted == false)
+                            @if($trashbox->box_receiver == 'trashbox')
                                 <a id="checkbox-{{$trashbox->id_pesan}}" href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$trashbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item <?php if($trashbox->read){echo 'read';} ?> ">
                                     <div class="checkbox">
                                         <label style="padding-top: 6px;">
@@ -90,7 +93,7 @@
                                 </a>
                             @endif
                         @else
-                            @if($trashbox->box == 'trashbox' && $trashbox->sender_deleted == false)
+                            @if($trashbox->box_sender == 'trashbox')
                                 <a id="checkbox-{{$trashbox->id_pesan}}" href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$trashbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item">
                                     <div class="checkbox">
                                         <label style="padding-top: 6px;">

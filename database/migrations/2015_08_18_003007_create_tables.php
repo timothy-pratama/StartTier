@@ -30,7 +30,7 @@ class CreateTables extends Migration
             $table->date('updated_at');
             $table->string('logo_perusahaan')->default('');
             $table->string('full_logo_perusahaan')->default('');
-            $table->date('pushed_at')->default(\Carbon\Carbon::now());
+            $table->dateTime('pushed_at')->default(\Carbon\Carbon::now());
             $table->integer('saldo')->default(0);
             $table->integer('jumlah_project')->default(0);
         });
@@ -52,12 +52,11 @@ class CreateTables extends Migration
             $table->integer('id_receiver');
             $table->text('judul_pesan')->default('');
             $table->text('isi_pesan')->default('');
-            $table->string('box')->default('inbox');
             $table->boolean('read')->default(false);
-            $table->boolean('sender_deleted')->default(false);
-            $table->boolean('receiver_deleted')->default(false);
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->string('box_sender')->default('outbox');
+            $table->string('box_receiver')->default('inbox');
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
         });
 
         Schema::create('project', function(Blueprint $table) {

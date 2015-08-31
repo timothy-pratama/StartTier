@@ -95,7 +95,8 @@ class TablesSeeder extends Seeder
             $pesan = factory(\App\Pesan::class)->make();
             $pesan->id_sender = mt_rand(51,100);
             $pesan->id_receiver = 1;
-            $pesan->box = 'inbox';
+            $pesan->box_receiver = 'inbox';
+            $pesan->box_sender = 'outbox';
             if(mt_rand(1,100)<= 50)
             {
                 $pesan->read = true;
@@ -111,7 +112,8 @@ class TablesSeeder extends Seeder
             $pesan = factory(\App\Pesan::class)->make();
             $pesan->id_receiver = mt_rand(51,100);
             $pesan->id_sender = 1;
-            $pesan->box = 'outbox';
+            $pesan->box_sender = 'outbox';
+            $pesan->box_receiver = 'inbox';
             $pesan->save();
         }
 
@@ -121,7 +123,8 @@ class TablesSeeder extends Seeder
             $pesan = factory(\App\Pesan::class)->make();
             $pesan->id_sender = mt_rand(1,50);
             $pesan->id_receiver = 51;
-            $pesan->box = 'inbox';
+            $pesan->box_receiver = 'inbox';
+            $pesan->box_sender = 'outbox';
             if(mt_rand(1,100)<= 50)
             {
                 $pesan->read = true;
@@ -137,7 +140,8 @@ class TablesSeeder extends Seeder
             $pesan = factory(\App\Pesan::class)->make();
             $pesan->id_receiver = mt_rand(1,50);
             $pesan->id_sender = 51;
-            $pesan->box = 'inbox';
+            $pesan->box_receiver = 'inbox';
+            $pesan->box_sender = 'outbox';
             $pesan->save();
         }
 

@@ -55,6 +55,7 @@ Route::get('/email/soft-delete-email',['uses'=>'emailController@softDelete','as'
 Route::get('/email/hard-delete-email',['uses'=>'emailController@hardDelete','as'=>'hard_delete_email']);
 Route::get('/email/restore-email',['uses'=>'emailController@restoreEmail','as'=>'restore_email']);
 Route::post('email/compose',['uses'=>'emailController@composeEmail','as'=>'compose_email']);
+Route::get('email/delete_from_email',['uses'=>'emailController@softDeleteFromEmail','as'=>'soft_delete_from_email']);
 
 /* Service Endpoint */
 Route::get('/API/user/available',['uses'=>'loginController@checkUser','as'=>'check_user']);

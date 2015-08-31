@@ -64,10 +64,31 @@ class emailController extends Controller
             foreach($ids as $id)
             {
                 $pesan = Pesan::find($id);
-                $pesan->box = 'trashbox';
+                if($pesan->id_sender == session('current_user')->id_user) {
+                    $pesan->box_sender = 'trashbox';
+                } else {
+                    $pesan->box_receiver = 'trashbox';
+                }
                 $pesan->save();
             }
             return ('ok');
+        } else {
+            return ('error');
+        }
+    }
+
+    public function softDeleteFromEmail(Request $request)
+    {
+        if(Hash::check(session('current_user')->username.session('current_user')->password,$request->token)) {
+            $id = $request->id_pesan;
+            $pesan = Pesan::find($id);
+            if($pesan->id_sender == session('current_user')->id_user) {
+                $pesan->box_sender = 'trashbox';
+            } else {
+                $pesan->box_receiver = 'trashbox';
+            }
+            $pesan->save();
+            return redirect()->route('get_inbox');
         } else {
             return ('error');
         }
@@ -84,11 +105,11 @@ class emailController extends Controller
                 $pesan = Pesan::find($id);
                 if($pesan->id_sender == $current_user->id_user)
                 {
-                    $pesan->sender_deleted = true;
+                    $pesan->box_sender = 'deleted';
                 }
                 else
                 {
-                    $pesan->receiver_deleted = true;
+                    $pesan->box_receiver = 'deleted';
                 }
                 $pesan->save();
             }
@@ -109,9 +130,9 @@ class emailController extends Controller
                 $pesan = Pesan::find($id);
                 if($pesan->id_sender == $current_user->id_user)
                 {
-                    $pesan->box = 'outbox';
+                    $pesan->box_sender = 'outbox';
                 } else {
-                    $pesan->box = 'inbox';
+                    $pesan->box_receiver = 'inbox';
                 }
                 $pesan->save();
             }
@@ -132,7 +153,8 @@ class emailController extends Controller
         $pesan->id_receiver = $penerimaPesan;
         $pesan->judul_pesan = $judulPesan;
         $pesan->isi_pesan = $isiPesan;
-        $pesan->box = 'outbox';
+        $pesan->box_sender = 'outbox';
+        $pesan->box_receiver = 'inbox';
         $pesan->read = false;
         $pesan->save();
         return redirect($request->url_callback)->with('send_message_success','ok');

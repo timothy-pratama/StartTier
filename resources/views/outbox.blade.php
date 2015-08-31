@@ -71,7 +71,7 @@
                 <div class="tab-pane fade in active" id="home">
                     <div class="list-group">
                     @foreach($outboxes as $outbox)
-                        @if($outbox->box != 'trashbox')
+                        @if($outbox->box_sender == 'outbox')
                             <a id="checkbox-{{$outbox->id_pesan}}" href="{{route('read_email',['nama_perusahaan'=>session('current_user')->nama_perusahaan,'id_message'=>$outbox->id_pesan,'url_callback'=>\Illuminate\Support\Facades\Request::fullUrl()])}}" class="list-group-item">
                                 <div class="checkbox">
                                     <label style="padding-top: 6px;">
