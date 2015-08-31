@@ -36,7 +36,6 @@
         "post-update-cmd": [
             "php artisan clear-compiled",
             "php artisan optimize",
-            "chmod -R 777 app/storage"
         ],
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""
