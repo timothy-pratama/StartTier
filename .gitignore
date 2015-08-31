@@ -1,6 +1,5 @@
 /vendor
 /node_modules
 Homestead.yaml
-.env
 .idea/
 /public/user_uploaded_files
