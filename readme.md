@@ -1,3 +1,9 @@
+### Note
+<ul>
+  <li>Untuk branch <b>master</b>, pada file <code>.env</code> set <code>APP_ENV=local</code> (debug mode) </li>
+  <li>Untuk branch <b>production</b>, pada file <code>.env</code> set <code>APP_ENV=prod</code> (production mode) </li>
+</ul>
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
