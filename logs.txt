@@ -1,0 +1,60 @@
+2015-08-31T02:31:41.949414+00:00 heroku[api]: Enable Logplex by timothy.pratama@gmail.com
+2015-08-31T02:31:41.949541+00:00 heroku[api]: Release v2 created by timothy.pratama@gmail.com
+2015-08-31T02:37:08.326901+00:00 heroku[api]: Scale to web=1 by timothy.pratama@gmail.com
+2015-08-31T02:37:08.391002+00:00 heroku[api]: Deploy e455618 by timothy.pratama@gmail.com
+2015-08-31T02:37:08.391126+00:00 heroku[api]: Release v3 created by timothy.pratama@gmail.com
+2015-08-31T02:37:08.455848+00:00 heroku[slug-compiler]: Slug compilation started
+2015-08-31T02:37:08.455959+00:00 heroku[slug-compiler]: Slug compilation finished
+2015-08-31T02:37:10.657707+00:00 heroku[web.1]: Starting process with command `npm start`
+2015-08-31T02:37:12.664010+00:00 app[web.1]: npm ERR! argv "/app/.heroku/node/bin/node" "/app/.heroku/node/bin/npm" "start"
+2015-08-31T02:37:12.664800+00:00 app[web.1]: npm ERR! npm  v2.11.3
+2015-08-31T02:37:12.665052+00:00 app[web.1]: 
+2015-08-31T02:37:12.665260+00:00 app[web.1]: npm ERR! missing script: start
+2015-08-31T02:37:12.665428+00:00 app[web.1]: npm ERR! 
+2015-08-31T02:37:12.665554+00:00 app[web.1]: npm ERR! If you need help, you may report this error at:
+2015-08-31T02:37:12.665686+00:00 app[web.1]: npm ERR!     <https://github.com/npm/npm/issues>
+2015-08-31T02:37:12.671128+00:00 app[web.1]: 
+2015-08-31T02:37:12.671471+00:00 app[web.1]: npm ERR! Please include the following file with any support request:
+2015-08-31T02:37:12.671660+00:00 app[web.1]: npm ERR!     /app/npm-debug.log
+2015-08-31T02:37:12.663393+00:00 app[web.1]: npm ERR! Linux 3.13.0-61-generic
+2015-08-31T02:37:12.664356+00:00 app[web.1]: npm ERR! node v0.12.7
+2015-08-31T02:37:13.425212+00:00 heroku[web.1]: State changed from starting to crashed
+2015-08-31T02:37:13.426261+00:00 heroku[web.1]: State changed from crashed to starting
+2015-08-31T02:37:13.412255+00:00 heroku[web.1]: Process exited with status 1
+2015-08-31T02:37:15.534108+00:00 heroku[web.1]: Starting process with command `npm start`
+2015-08-31T02:37:18.128704+00:00 app[web.1]: npm ERR! argv "/app/.heroku/node/bin/node" "/app/.heroku/node/bin/npm" "start"
+2015-08-31T02:37:18.131038+00:00 app[web.1]: npm ERR! npm  v2.11.3
+2015-08-31T02:37:18.132333+00:00 app[web.1]: npm ERR! missing script: start
+2015-08-31T02:37:18.133332+00:00 app[web.1]: npm ERR! If you need help, you may report this error at:
+2015-08-31T02:37:18.133683+00:00 app[web.1]: npm ERR!     <https://github.com/npm/npm/issues>
+2015-08-31T02:37:18.145166+00:00 app[web.1]: 
+2015-08-31T02:37:18.127597+00:00 app[web.1]: npm ERR! Linux 3.13.0-57-generic
+2015-08-31T02:37:18.129593+00:00 app[web.1]: npm ERR! node v0.12.7
+2015-08-31T02:37:18.131540+00:00 app[web.1]: 
+2015-08-31T02:37:18.132864+00:00 app[web.1]: npm ERR! 
+2015-08-31T02:37:18.145612+00:00 app[web.1]: npm ERR! Please include the following file with any support request:
+2015-08-31T02:37:18.145914+00:00 app[web.1]: npm ERR!     /app/npm-debug.log
+2015-08-31T02:37:19.232609+00:00 heroku[web.1]: State changed from starting to crashed
+2015-08-31T02:37:19.215266+00:00 heroku[web.1]: Process exited with status 1
+2015-08-31T02:37:20.300166+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=starttier.herokuapp.com request_id=a2e6c76a-9cc5-4efe-ba6a-538fb92aacfa fwd="180.253.13.195" dyno= connect= service= status=503 bytes=
+2015-08-31T02:37:21.084458+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=starttier.herokuapp.com request_id=98091889-9e4b-4dbe-8f4d-650b0c8324dd fwd="180.253.13.195" dyno= connect= service= status=503 bytes=
+2015-08-31T02:46:22.867702+00:00 heroku[web.1]: State changed from crashed to starting
+2015-08-31T02:46:22.775292+00:00 heroku[api]: Release v4 created by timothy.pratama@gmail.com
+2015-08-31T02:46:22.775155+00:00 heroku[api]: Set BUILDPACK_URL config vars by timothy.pratama@gmail.com
+2015-08-31T02:46:25.579527+00:00 heroku[web.1]: Starting process with command `npm start`
+2015-08-31T02:46:35.384237+00:00 app[web.1]: npm ERR! Linux 3.13.0-57-generic
+2015-08-31T02:46:35.385588+00:00 app[web.1]: npm ERR! node v0.12.7
+2015-08-31T02:46:35.386440+00:00 app[web.1]: 
+2015-08-31T02:46:35.386719+00:00 app[web.1]: npm ERR! missing script: start
+2015-08-31T02:46:35.386957+00:00 app[web.1]: npm ERR! 
+2015-08-31T02:46:35.387158+00:00 app[web.1]: npm ERR! If you need help, you may report this error at:
+2015-08-31T02:46:35.387360+00:00 app[web.1]: npm ERR!     <https://github.com/npm/npm/issues>
+2015-08-31T02:46:35.394080+00:00 app[web.1]: 
+2015-08-31T02:46:35.385023+00:00 app[web.1]: npm ERR! argv "/app/.heroku/node/bin/node" "/app/.heroku/node/bin/npm" "start"
+2015-08-31T02:46:35.386223+00:00 app[web.1]: npm ERR! npm  v2.11.3
+2015-08-31T02:46:35.394497+00:00 app[web.1]: npm ERR! Please include the following file with any support request:
+2015-08-31T02:46:35.394771+00:00 app[web.1]: npm ERR!     /app/npm-debug.log
+2015-08-31T02:46:36.422640+00:00 heroku[web.1]: State changed from starting to crashed
+2015-08-31T02:46:36.410939+00:00 heroku[web.1]: Process exited with status 1
+2015-08-31T02:46:38.518697+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=starttier.herokuapp.com request_id=bb688e00-1e87-4922-8361-d8da7d74751e fwd="180.253.13.195" dyno= connect= service= status=503 bytes=
+2015-08-31T02:46:39.251415+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=starttier.herokuapp.com request_id=4401c527-c3af-4385-95ea-f7b5b3756ef3 fwd="180.253.13.195" dyno= connect= service= status=503 bytes=
