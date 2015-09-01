@@ -2,3 +2,4 @@
 Homestead.yaml
 .idea/
 /public/user_uploaded_files
+/vendor
